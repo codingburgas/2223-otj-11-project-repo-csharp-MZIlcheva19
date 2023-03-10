@@ -12,33 +12,10 @@
             _name = name;
             _workPossition = workPossition;
         }
-
-        public string GetName()
-        {
-            return _name;
-        }
-
-        public string GetWorkPossition()
-        {
-            return _workPossition;
-        }
-
-        public int GetId()
-        {
-            return _id;
-        }
-
-        public void SetName(string name)
-        {
-            _name = name;
-        }
-
-        public void SetWorkPossition(string workPossition)
-        {
-            _workPossition = workPossition;
-        }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string workPossition { get; set; }
     }
-
     internal class Client
     {
         private int _id;
@@ -48,17 +25,6 @@
         private string _name = null;
         private string _phoneNumber = null;
         private string _details;
-
-        private int _stylistId;
-        private DateTime _appointment;     
-
-        public bool isRegistered(string password)
-        {
-            if (password != null) 
-                return true;
-
-            return false;
-        }
 
         public Client(string username,
             string passowrd,
@@ -73,45 +39,18 @@
             _details = details;
         }
 
-        public int GetStylistId()
-        {
-            return _stylistId;
-        }
+        public string username { get; set; }
+        public string password { get; set; }
+        public string name { get; set; }
+        public string phoneNumber { get; set; }
+        public string details { get; set; }
 
-        public int GetId()
+        public bool isRegistered(string password)
         {
-            return _id;
-        }
+            if (password != null)
+                return true;
 
-        public string GetName()
-        {
-            return _name;
-        }
-
-        public string GetDetails()
-        {
-            return _details;
-        }
-
-        public DateTime GetAppointment()
-        {
-            return _appointment;
-        }
-
-
-        public void SetName(string name)
-        {
-            _name = name;
-        }
-
-        public void SetDetails(string details)
-        {
-            _details = details; ;
-        }
-
-        public void SetAppointment(DateTime appointment)
-        {
-            _appointment = appointment;
+            return false;
         }
     }
 
@@ -120,13 +59,19 @@
         private int _id;
         private string _name;
         private string _details;
+        private List<DateTime> _freeHours;
+        private List<int> employeesId;
     }
 
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Client Mariya = new Client("MZIlcheva19", "12345678", "Mariya", "088 888 8888", "Details");
+
+            Client Polya = new Client("PDDimitrova19", "12345678", "Polya", "088 888 8888", "Details");
+
+            Employee Ivan = new Employee("Ivan", "Hairdresser", 1);
         }
     }
 }
