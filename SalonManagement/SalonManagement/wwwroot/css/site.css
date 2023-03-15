@@ -17,7 +17,6 @@ body {
     margin-bottom: 60px;
 }
 
-<style >
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -58,18 +57,16 @@ body {
     overflow-y: hidden;
 }
 
-    .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-    }
-
-</style >
+.nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
 
 body {
     padding-top: 3rem;
@@ -84,6 +81,7 @@ body {
 .carousel-caption {
     bottom: 3rem;
     z-index: 10;
+    text-align: left;
 }
 
 .carousel-item {
@@ -95,10 +93,10 @@ body {
     text-align: center;
 }
 
-    .marketing .col-lg-4 p {
-        margin-right: .75rem;
-        margin-left: .75rem;
-    }
+.marketing .col-lg-4 p {
+    margin-right: .75rem;
+    margin-left: .75rem;
+}
 
 .featurette-divider {
     margin: 5rem 0;
