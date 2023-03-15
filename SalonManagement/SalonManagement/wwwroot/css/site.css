@@ -57,16 +57,16 @@ body {
     overflow-y: hidden;
 }
 
-.nav-scroller .nav {
-    display: flex;
-    flex-wrap: nowrap;
-    padding-bottom: 1rem;
-    margin-top: -1px;
-    overflow-x: auto;
-    text-align: center;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-}
+    .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
 
 body {
     padding-top: 3rem;
@@ -81,7 +81,10 @@ body {
 .carousel-caption {
     bottom: 3rem;
     z-index: 10;
-    text-align: left;
+}
+
+h1.carousel-caption {
+    text-shadow: 3px 3px black;
 }
 
 .carousel-item {
@@ -93,10 +96,10 @@ body {
     text-align: center;
 }
 
-.marketing .col-lg-4 p {
-    margin-right: .75rem;
-    margin-left: .75rem;
-}
+    .marketing .col-lg-4 p {
+        margin-right: .75rem;
+        margin-left: .75rem;
+    }
 
 .featurette-divider {
     margin: 5rem 0;
