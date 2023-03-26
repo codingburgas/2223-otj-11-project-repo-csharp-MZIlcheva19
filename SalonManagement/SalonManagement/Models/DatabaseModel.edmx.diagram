@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2f6516c10b3c4c2cb05f85b5e19b52f7" Name="Diagram1">
+        <EntityTypeShape EntityType="SalonManagementModel.Appointment" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonManagementModel.Customer" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonManagementModel.Employee" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonManagementModel.Service" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonManagementModel.Skill" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SalonManagementModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="SalonManagementModel.FK__Appointme__Emplo__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="SalonManagementModel.FK__Appointme__Servi__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="SalonManagementModel.FK__Employees__Skill__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="SalonManagementModel.CustomersAppointments" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
