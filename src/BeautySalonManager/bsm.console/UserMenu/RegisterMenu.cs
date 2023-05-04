@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using bsm.bll;
 
-namespace bsm.console
+namespace bsm.console.UserMenu
 {
     public class RegisterMenu
     {
@@ -25,6 +25,9 @@ namespace bsm.console
 
             UserService.RegisterUser(username, password, fName, lName, phone, email);
 
+            Console.WriteLine();
+            Console.WriteLine("User registered");
+            Console.ReadKey();
             MainMenu.Print();
         }
     }

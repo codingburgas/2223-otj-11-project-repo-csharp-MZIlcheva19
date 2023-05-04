@@ -17,6 +17,15 @@ namespace bsm.dal.Repositories
             _context = context;
         }
 
+        public User? GetUserByUsername(string username)
+        {
+            User? user = _context
+                .Users
+                .FirstOrDefault(u => u.Username == username);
+
+            return user;
+        }
+
         public void AddRow(User user)
         {
             _context.Users.Add(user);

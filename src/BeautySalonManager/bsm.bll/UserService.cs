@@ -1,18 +1,46 @@
-﻿using bsm.dal.Data;
-using bsm.dal.Repositories;
+﻿using Microsoft.Identity.Client;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
 using bsm.dal.Models;
+using bsm.dal.Data;
 using bsm.util;
+using System.Security;
+using System.Net.NetworkInformation;
+using Microsoft.IdentityModel.Tokens;
+using System.Runtime.Intrinsics.Arm;
+using System.Security.Cryptography;
+using System.Text;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using bsm.dal.Repositories;
 
 namespace bsm.bll
 {
     public class UserService
     {
+        public static bool LoginUser(string username, string password)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                UserRepository userRepository = new(context);
+
+                bool verifyUser = false;
+
+                User? user = userRepository.GetUserByUsername(username);
+
+                if (user != null)
+                {
+                    string saltedPassword = password + user.Salt;
+                    string hashedPass = HashPassword(saltedPassword);
+
+                    if (user.Password == hashedPass)
+                    {
+                        verifyUser = true;
+                    }
+                }
+
+                return verifyUser;
+            }
+        }
+
         public static void RegisterUser(string username, string password, string fName, string lName, string phone, string email)
         {
             using (var context = new BeautySalonContext())
@@ -23,7 +51,7 @@ namespace bsm.bll
                 user.Username = username;
 
                 user.Salt = GenerateSalt();
-                string saltedPassword = user.Password + user.Salt;
+                string saltedPassword = password + user.Salt;
                 user.Password = HashPassword(saltedPassword);
 
                 user.FirstName = fName;

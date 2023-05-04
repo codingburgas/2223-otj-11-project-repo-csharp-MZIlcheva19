@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using bsm.console.UserMenu;
 
 namespace bsm.console
 {
@@ -12,7 +13,7 @@ namespace bsm.console
         {
             Console.Clear();
 
-            Console.WriteLine("[R] Register");
+            Console.WriteLine("[R] Register  [L] Login");
             
             while(true)
             {
@@ -21,6 +22,7 @@ namespace bsm.console
                 switch(input)
                 {
                     case 'R': RegisterMenu.Print(); break;
+                    case 'L': LoginMenu.Print(); break;
                     case 'B': Environment.Exit(0); break;
                     default: break;
                 }
