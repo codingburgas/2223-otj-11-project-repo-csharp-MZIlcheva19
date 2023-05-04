@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace bsm.dal.Models;
 
-public partial class ServicesSkill
+public partial class ServiceSkill
 {
     [Key]
     public int Id { get; set; }
@@ -16,10 +16,10 @@ public partial class ServicesSkill
     public int? SkillId { get; set; }
 
     [ForeignKey("ServiceId")]
-    [InverseProperty("ServicesSkills")]
+    [InverseProperty("ServiceSkills")]
     public virtual Service? Service { get; set; }
 
     [ForeignKey("SkillId")]
-    [InverseProperty("ServicesSkills")]
+    [InverseProperty("ServiceSkills")]
     public virtual Skill? Skill { get; set; }
 }

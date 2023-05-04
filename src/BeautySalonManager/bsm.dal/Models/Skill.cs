@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace bsm.dal.Models;
 
-[Index("Name", Name = "UQ__Skills__737584F600113B4A", IsUnique = true)]
+[Index("Name", Name = "UQ__Skills__737584F66107F4D5", IsUnique = true)]
 public partial class Skill
 {
     [Key]
@@ -17,8 +17,8 @@ public partial class Skill
     public string Name { get; set; } = null!;
 
     [InverseProperty("Skill")]
-    public virtual ICollection<ServicesSkill> ServicesSkills { get; set; } = new List<ServicesSkill>();
+    public virtual ICollection<ServiceSkill> ServiceSkills { get; set; } = new List<ServiceSkill>();
 
     [InverseProperty("Skill")]
-    public virtual ICollection<UsersSkill> UsersSkills { get; set; } = new List<UsersSkill>();
+    public virtual ICollection<UserSkill> UserSkills { get; set; } = new List<UserSkill>();
 }

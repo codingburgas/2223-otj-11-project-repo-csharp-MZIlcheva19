@@ -6,8 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace bsm.dal.Models;
 
-[Index("Name", Name = "UQ__UserType__737584F6B1080A5B", IsUnique = true)]
-public partial class UserType
+[Index("Name", Name = "UQ__ServiceG__737584F65DB3F992", IsUnique = true)]
+public partial class ServiceGroup
 {
     [Key]
     public int Id { get; set; }
@@ -16,6 +16,6 @@ public partial class UserType
     [Unicode(false)]
     public string Name { get; set; } = null!;
 
-    [InverseProperty("Type")]
-    public virtual ICollection<User> Users { get; set; } = new List<User>();
+    [InverseProperty("Group")]
+    public virtual ICollection<Service> Services { get; set; } = new List<Service>();
 }

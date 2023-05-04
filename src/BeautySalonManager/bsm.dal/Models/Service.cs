@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace bsm.dal.Models;
 
-[Index("Name", Name = "UQ__Services__737584F6523CE599", IsUnique = true)]
+[Index("Name", Name = "UQ__Services__737584F67486421B", IsUnique = true)]
 public partial class Service
 {
     [Key]
@@ -21,9 +21,15 @@ public partial class Service
 
     public TimeSpan Time { get; set; }
 
+    public int GroupId { get; set; }
+
     [InverseProperty("Service")]
     public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
 
+    [ForeignKey("GroupId")]
+    [InverseProperty("Services")]
+    public virtual ServiceGroup Group { get; set; } = null!;
+
     [InverseProperty("Service")]
-    public virtual ICollection<ServicesSkill> ServicesSkills { get; set; } = new List<ServicesSkill>();
+    public virtual ICollection<ServiceSkill> ServiceSkills { get; set; } = new List<ServiceSkill>();
 }
