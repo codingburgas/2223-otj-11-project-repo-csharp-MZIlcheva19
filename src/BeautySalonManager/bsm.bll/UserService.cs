@@ -67,6 +67,37 @@ namespace bsm.bll
             }
         }
 
+        public static void AddAdmin()
+        {
+            using (var context = new BeautySalonContext())
+            {
+                UserRepository userRepository = new(context);
+
+                User? user = userRepository.GetUserByUsername("admin");
+
+                if (user == null)
+                {
+                    string salt = GenerateSalt();
+                    string saltedPassword = "admin" + salt;
+                    string hashedPassword = HashPassword(saltedPassword);
+
+                    User admin = new()
+                    {
+                        Username = "admin",
+                        Password = hashedPassword,
+                        Salt = salt,
+                        FirstName = "admin",
+                        LastName = "admin",
+                        Phone = "0000000000",
+                        Email = "admin@email.com",
+                        TypeId = (int)TypeCodes.Admin
+                    };
+
+                    userRepository.AddRow(admin);
+                }
+            }
+        }
+
         public static string GenerateSalt()
         {
             Random rnd = new Random();
