@@ -15,7 +15,7 @@ namespace bsm.console
             Console.Clear();
             UserService.AddAdmin();
 
-            Console.Write("[S] Services  [O] Options  ");
+            Console.Write("[S] Services  [O] Options  [L] LogOut  ");
             if(UserLog.LoggedUser.Username == "admin")
                 Console.WriteLine("[A] Panel");
             else
@@ -29,6 +29,7 @@ namespace bsm.console
                 {
                     case 'S': /* call ServicesMenu */ break;
                     case 'O': /* call OptionsMenu */ break;
+                    case 'L': UserLog.LoggedUser = null; StartMenu.Print(); break;
                     case 'A': if (UserLog.LoggedUser.Username == "admin") /* call AdminPanelMenu */ break; break;
                     case 'B': Environment.Exit(0); break;
                     default: break;
