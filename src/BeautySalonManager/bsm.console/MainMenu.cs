@@ -1,9 +1,10 @@
-﻿using System;
+﻿using bsm.bll;
+using bsm.util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using bsm.console.UserMenu;
 
 namespace bsm.console
 {
@@ -12,17 +13,23 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
+            UserService.AddAdmin();
 
-            Console.WriteLine("[R] Register  [L] Login");
-            
-            while(true)
+            Console.Write("[S] Services  [O] Options  ");
+            if(UserLog.LoggedUser.Username == "admin")
+                Console.WriteLine("[A] Panel");
+            else
+                Console.WriteLine();
+
+            while (true)
             {
-                var input = Char.ToUpper(Console.ReadKey().KeyChar);
+                var input = char.ToUpper(Console.ReadKey().KeyChar);
 
-                switch(input)
+                switch (input)
                 {
-                    case 'R': RegisterMenu.Print(); break;
-                    case 'L': LoginMenu.Print(); break;
+                    case 'S': /* call ServicesMenu */ break;
+                    case 'O': /* call OptionsMenu */ break;
+                    case 'A': if (UserLog.LoggedUser.Username == "admin") /* call AdminPanelMenu */ break; break;
                     case 'B': Environment.Exit(0); break;
                     default: break;
                 }

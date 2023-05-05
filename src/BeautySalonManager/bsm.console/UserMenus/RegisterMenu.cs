@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using bsm.bll;
+using bsm.util;
 
-namespace bsm.console.UserMenu
+namespace bsm.console
 {
     public class RegisterMenu
     {
@@ -24,6 +25,8 @@ namespace bsm.console.UserMenu
             string email = Console.ReadLine();
 
             UserService.RegisterUser(username, password, fName, lName, phone, email);
+
+            UserLog.LoggedUser = UserService.GetUserByUsername(username);
 
             Console.WriteLine();
             Console.WriteLine("User registered");

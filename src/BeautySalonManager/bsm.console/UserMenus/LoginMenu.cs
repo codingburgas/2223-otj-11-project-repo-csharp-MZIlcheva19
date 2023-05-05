@@ -1,11 +1,12 @@
 ﻿using bsm.bll;
+using bsm.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bsm.console.UserMenu
+namespace bsm.console
 {
     internal class LoginMenu
     {
@@ -25,6 +26,8 @@ namespace bsm.console.UserMenu
                 Console.ReadKey();
                 Print();
             }
+
+            UserLog.LoggedUser = UserService.GetUserByUsername(username);
 
             Console.WriteLine();
             Console.WriteLine("Logged In");

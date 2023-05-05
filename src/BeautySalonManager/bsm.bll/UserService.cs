@@ -16,6 +16,18 @@ namespace bsm.bll
 {
     public class UserService
     {
+        public static User? GetUserByUsername(string username)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                UserRepository userRepository = new(context);
+
+                User? user = userRepository.GetUserByUsername(username);
+
+                return user;
+            }
+        }
+
         public static bool LoginUser(string username, string password)
         {
             using (var context = new BeautySalonContext())
@@ -24,7 +36,7 @@ namespace bsm.bll
 
                 bool verifyUser = false;
 
-                User? user = userRepository.GetUserByUsername(username);
+                User? user = GetUserByUsername(username);
 
                 if (user != null)
                 {
@@ -73,7 +85,7 @@ namespace bsm.bll
             {
                 UserRepository userRepository = new(context);
 
-                User? user = userRepository.GetUserByUsername("admin");
+                User? user = GetUserByUsername("admin");
 
                 if (user == null)
                 {
