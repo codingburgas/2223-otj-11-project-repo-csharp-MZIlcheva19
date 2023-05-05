@@ -1,6 +1,4 @@
-﻿using bsm.bll;
-
-namespace bsm.console
+﻿namespace bsm.console
 {
     internal class Start
     {

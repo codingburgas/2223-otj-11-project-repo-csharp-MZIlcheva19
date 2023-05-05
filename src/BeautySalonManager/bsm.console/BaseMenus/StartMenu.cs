@@ -1,9 +1,4 @@
 ﻿using bsm.bll;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace bsm.console
 {
@@ -14,7 +9,7 @@ namespace bsm.console
             Console.Clear();
             UserService.AddAdmin();
 
-            Console.WriteLine("[R] Register  [L] Login");
+            Console.WriteLine("[R] Register  [L] Login  [E] Exit");
 
             while (true)
             {
@@ -24,7 +19,7 @@ namespace bsm.console
                 {
                     case 'R': RegisterMenu.Print(); break;
                     case 'L': LoginMenu.Print(); break;
-                    case 'B': Environment.Exit(0); break;
+                    case 'E': Environment.Exit(0); break;
                     default: break;
                 }
             }

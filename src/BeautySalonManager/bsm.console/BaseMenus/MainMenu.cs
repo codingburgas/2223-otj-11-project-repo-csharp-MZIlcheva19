@@ -1,10 +1,5 @@
 ﻿using bsm.bll;
 using bsm.util;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace bsm.console
 {
@@ -15,8 +10,8 @@ namespace bsm.console
             Console.Clear();
             UserService.AddAdmin();
 
-            Console.Write("[S] Services  [O] Options  [L] LogOut  ");
-            if(UserLog.LoggedUser.Username == "admin")
+            Console.Write("[S] Services  [O] Options  [L] LogOut  [E] Exit  ");
+            if (UserLog.LoggedUser.Username == "admin")
                 Console.WriteLine("[A] Panel");
             else
                 Console.WriteLine();
@@ -27,11 +22,11 @@ namespace bsm.console
 
                 switch (input)
                 {
-                    case 'S': /* call ServicesMenu */ break;
-                    case 'O': /* call OptionsMenu */ break;
+                    case 'S': Console.WriteLine("Call ServicesMenu"); /* call ServicesMenu */ break;
+                    case 'O': Console.WriteLine("Call OptionsMenu"); /* call OptionsMenu */ break;
                     case 'L': UserLog.LoggedUser = null; StartMenu.Print(); break;
-                    case 'A': if (UserLog.LoggedUser.Username == "admin") /* call AdminPanelMenu */ break; break;
-                    case 'B': Environment.Exit(0); break;
+                    case 'A': if (UserLog.LoggedUser.Username == "admin") Console.WriteLine("Call AdminPanelMenu"); /* call AdminPanelMenu */ break;
+                    case 'E': Environment.Exit(0); break;
                     default: break;
                 }
             }

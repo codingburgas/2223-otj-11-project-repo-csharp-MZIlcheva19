@@ -1,16 +1,9 @@
-﻿using Microsoft.Identity.Client;
-using System;
+﻿using System.Text;
+using System.Security.Cryptography;
+using bsm.dal.Repositories;
 using bsm.dal.Models;
 using bsm.dal.Data;
 using bsm.util;
-using System.Security;
-using System.Net.NetworkInformation;
-using Microsoft.IdentityModel.Tokens;
-using System.Runtime.Intrinsics.Arm;
-using System.Security.Cryptography;
-using System.Text;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
-using bsm.dal.Repositories;
 
 namespace bsm.bll
 {
