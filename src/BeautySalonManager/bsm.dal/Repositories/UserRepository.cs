@@ -31,5 +31,11 @@ namespace bsm.dal.Repositories
             _context.Users.Add(user);
             _context.SaveChanges();
         }
+
+        public void DeleteRow(User user)
+        {
+            _context.Users.Remove(user);
+            _context.SaveChanges();
+        }
     }
 }

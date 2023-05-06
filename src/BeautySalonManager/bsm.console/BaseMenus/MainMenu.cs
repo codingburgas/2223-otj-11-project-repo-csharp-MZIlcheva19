@@ -3,18 +3,19 @@ using bsm.util;
 
 namespace bsm.console
 {
-    public class MainMenu
+    internal class MainMenu
     {
         public static void Print()
         {
             Console.Clear();
             UserService.AddAdmin();
 
-            Console.Write("[S] Services  [O] Options  [L] LogOut  [E] Exit  ");
-            if (UserLog.LoggedUser.Username == "admin")
-                Console.WriteLine("[A] Panel");
-            else
-                Console.WriteLine();
+            Console.Write("[S] Services  [O] Options  ");
+            if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Admin)
+            {
+                Console.Write("[A] Panel  ");
+            }
+            Console.WriteLine("[E] Exit");
 
             while (true)
             {
@@ -23,9 +24,8 @@ namespace bsm.console
                 switch (input)
                 {
                     case 'S': Console.WriteLine("Call ServicesMenu"); /* call ServicesMenu */ break;
-                    case 'O': Console.WriteLine("Call OptionsMenu"); /* call OptionsMenu */ break;
-                    case 'L': UserLog.LoggedUser = null; StartMenu.Print(); break;
-                    case 'A': if (UserLog.LoggedUser.Username == "admin") Console.WriteLine("Call AdminPanelMenu"); /* call AdminPanelMenu */ break;
+                    case 'O': Console.WriteLine("Call OptionsMenu"); OptionsMenu.Print(); break;
+                    case 'A': if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Admin) Console.WriteLine("Call AdminPanelMenu"); /* call AdminPanelMenu */ break;
                     case 'E': Environment.Exit(0); break;
                     default: break;
                 }

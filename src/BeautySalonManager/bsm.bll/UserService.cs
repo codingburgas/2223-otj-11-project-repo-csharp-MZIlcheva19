@@ -72,6 +72,16 @@ namespace bsm.bll
             }
         }
 
+        public static void DeleteUser(User user)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                UserRepository userRepository = new(context);
+
+                userRepository.DeleteRow(user);
+            }
+        }
+
         public static void AddAdmin()
         {
             using (var context = new BeautySalonContext())
