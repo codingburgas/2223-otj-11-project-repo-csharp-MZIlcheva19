@@ -38,7 +38,7 @@ public partial class BeautySalonContext : DbContext
     {
         modelBuilder.Entity<Appointment>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Appointm__3214EC0735E7F033");
+            entity.HasKey(e => e.Id).HasName("PK__Appointm__3214EC07C50B834B");
 
             entity.HasOne(d => d.Customer).WithMany(p => p.AppointmentCustomers)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -55,7 +55,7 @@ public partial class BeautySalonContext : DbContext
 
         modelBuilder.Entity<Service>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Services__3214EC078D665ACD");
+            entity.HasKey(e => e.Id).HasName("PK__Services__3214EC07C7B744BB");
 
             entity.HasOne(d => d.Group).WithMany(p => p.Services)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -64,12 +64,12 @@ public partial class BeautySalonContext : DbContext
 
         modelBuilder.Entity<ServiceGroup>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__ServiceG__3214EC07AD249875");
+            entity.HasKey(e => e.Id).HasName("PK__ServiceG__3214EC073F7232D0");
         });
 
         modelBuilder.Entity<ServiceSkill>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__ServiceS__3214EC07CA827A12");
+            entity.HasKey(e => e.Id).HasName("PK__ServiceS__3214EC0737E0984B");
 
             entity.HasOne(d => d.Service).WithMany(p => p.ServiceSkills).HasConstraintName("FK__ServiceSk__Servi__4CA06362");
 
@@ -78,17 +78,17 @@ public partial class BeautySalonContext : DbContext
 
         modelBuilder.Entity<Skill>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Skills__3214EC07BE835F1A");
+            entity.HasKey(e => e.Id).HasName("PK__Skills__3214EC07160C6266");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Users__3214EC07D75ED747");
+            entity.HasKey(e => e.Id).HasName("PK__Users__3214EC07227A901E");
         });
 
         modelBuilder.Entity<UserSkill>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__UserSkil__3214EC07F5B767CE");
+            entity.HasKey(e => e.Id).HasName("PK__UserSkil__3214EC0701FE3388");
 
             entity.HasOne(d => d.Skill).WithMany(p => p.UserSkills).HasConstraintName("FK__UserSkill__Skill__49C3F6B7");
 

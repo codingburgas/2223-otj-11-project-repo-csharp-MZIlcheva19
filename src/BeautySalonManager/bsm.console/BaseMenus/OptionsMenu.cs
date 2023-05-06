@@ -1,4 +1,5 @@
-﻿using bsm.util;
+﻿using bsm.bll;
+using bsm.util;
 
 namespace bsm.console
 {
@@ -9,14 +10,17 @@ namespace bsm.console
             Console.Clear();
             if(UserLog.LoggedUser.TypeId != (int)TypeCodes.Admin)
             {
-                Console.Write("[E] EditUser  [D] DeleteUser  [R] RequestApproval  ");
+                Console.Write("[E] EditUser  [D] DeleteUser  ");
             }
-            Console.Write("[L] LogOut  ");
-            if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Admin)
+            if(UserLog.LoggedUser.EmployeeRequest == true)
             {
-                Console.Write("[A] ApproveUsers  ");
+                Console.Write("[R] RemoveEmployeeRequest  ");
             }
-            Console.WriteLine("[B] Back");
+            else
+            {
+                Console.Write("[R] RequestEmployee  ");
+            }
+            Console.WriteLine("[L] LogOut  [B] Back");
 
             while (true)
             {
@@ -26,9 +30,8 @@ namespace bsm.console
                 {
                     case 'E': if (UserLog.LoggedUser.TypeId != (int)TypeCodes.Admin) EditUserMenu.Print(); break;
                     case 'D': if (UserLog.LoggedUser.TypeId != (int)TypeCodes.Admin) DeleteUserMenu.Print(); break;
-                    case 'R': if (UserLog.LoggedUser.TypeId != (int)TypeCodes.Admin) Console.WriteLine("Request Employee Approval"); break;
+                    case 'R': if (UserLog.LoggedUser.TypeId != (int)TypeCodes.Admin) RequestApprovalMenu.Print(); break;
                     case 'L': UserLog.LoggedUser = null; StartMenu.Print(); break;
-                    case 'A': if(UserLog.LoggedUser.TypeId == (int)TypeCodes.Admin) Console.WriteLine("User Approval list"); break;
                     case 'B': MainMenu.Print(); break;
                     default: break;
                 }

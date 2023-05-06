@@ -20,7 +20,8 @@ CREATE TABLE [Users] (
 	[LastName] nvarchar(50) NOT NULL,
 	[Phone] varchar(25) NOT NULL,
 	[Email] varchar(50) NOT NULL,
-	[TypeId] int
+	[TypeId] int,
+	[EmployeeRequest] bit
 )
 
 CREATE TABLE [ServiceGroups] (

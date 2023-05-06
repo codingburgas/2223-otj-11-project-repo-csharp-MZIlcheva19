@@ -64,6 +64,7 @@ namespace bsm.bll
                 user.Phone = phone;
                 user.Email = email;
                 user.TypeId = (int)TypeCodes.Client;
+                user.EmployeeRequest = false;
 
                 if(user != null)
                 {
@@ -100,6 +101,18 @@ namespace bsm.bll
                 UserSkillService.RemoveUserSkills(user);
 
                 userRepository.DeleteRow(user);
+            }
+        }
+
+        public static void ChangeRequestApproval(User user)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                UserRepository userRepository = new(context);
+
+                user.EmployeeRequest = !user.EmployeeRequest;
+
+                userRepository.UpdateUser(user);
             }
         }
 

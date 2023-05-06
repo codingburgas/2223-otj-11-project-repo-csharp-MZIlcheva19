@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace bsm.dal.Models;
 
-[Index("Username", Name = "UQ__Users__536C85E4F5D02769", IsUnique = true)]
+[Index("Username", Name = "UQ__Users__536C85E453425AC0", IsUnique = true)]
 public partial class User
 {
     [Key]
@@ -39,6 +39,8 @@ public partial class User
     public string Email { get; set; } = null!;
 
     public int? TypeId { get; set; }
+
+    public bool? EmployeeRequest { get; set; }
 
     [InverseProperty("Customer")]
     public virtual ICollection<Appointment> AppointmentCustomers { get; set; } = new List<Appointment>();
