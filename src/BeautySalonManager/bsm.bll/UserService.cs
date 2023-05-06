@@ -110,7 +110,14 @@ namespace bsm.bll
             {
                 UserRepository userRepository = new(context);
 
-                user.EmployeeRequest = !user.EmployeeRequest;
+                if(user.EmployeeRequest != null)
+                {
+                    user.EmployeeRequest = !user.EmployeeRequest;
+                }
+                else
+                {
+                    user.EmployeeRequest = true;
+                }
 
                 userRepository.UpdateUser(user);
             }
