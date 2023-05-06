@@ -3,6 +3,7 @@ using bsm.dal.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,6 +32,15 @@ namespace bsm.dal.Repositories
             if(user != null)
             {
                 _context.Users.Add(user);
+                _context.SaveChanges();
+            }
+        }
+
+        public void UpdateUser(User user)
+        {
+            if(user != null)
+            {
+                _context.Update(user);
                 _context.SaveChanges();
             }
         }

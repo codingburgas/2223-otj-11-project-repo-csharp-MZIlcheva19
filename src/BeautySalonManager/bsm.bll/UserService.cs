@@ -72,6 +72,24 @@ namespace bsm.bll
             }
         }
 
+        public static void EditUser(User user, string username, string password, string fName, string lName, string phone, string email)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                UserRepository userRepository = new(context);
+
+                user.Username = username;
+                string saltedPassword = password + user.Salt;
+                user.Password = HashPassword(saltedPassword);
+                user.FirstName = fName;
+                user.LastName = lName;
+                user.Phone = phone;
+                user.Email = email;
+
+                userRepository.UpdateUser(user);
+            }
+        }
+
         public static void DeleteUser(User user)
         {
             using (var context = new BeautySalonContext())
