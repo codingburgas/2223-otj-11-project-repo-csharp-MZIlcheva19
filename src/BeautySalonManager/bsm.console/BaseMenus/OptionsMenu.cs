@@ -1,5 +1,4 @@
-﻿using bsm.bll;
-using bsm.util;
+﻿using bsm.util;
 
 namespace bsm.console
 {

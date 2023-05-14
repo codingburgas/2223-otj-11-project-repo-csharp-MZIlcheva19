@@ -17,5 +17,21 @@ namespace bsm.bll
                 return groups;
             }
         }
+
+        public static void AddGroup(string name)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                ServiceGroupRepository serviceGroupRepository = new(context);
+
+                ServiceGroup serviceGroup = new();
+                serviceGroup.Name = name;
+
+                if(serviceGroup != null)
+                {
+                    serviceGroupRepository.AddRow(serviceGroup);
+                }
+            }
+        }
     }
 }
