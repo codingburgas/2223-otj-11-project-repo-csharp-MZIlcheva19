@@ -17,5 +17,20 @@ namespace bsm.bll
                 return services;
             }
         }
+
+        public static List<Service> GetAllByGroup(int groupId)
+        {
+            return GetAll().Where(s => s.GroupId == groupId).ToList();
+        }
+
+        public static void DeleteAllByGroup(int groupId)
+        {
+            List<Service> services = GetAllByGroup(groupId);
+
+            foreach (Service service in services)
+            {
+                ServiceSkillService.DeleteAllByService(service.Id);
+            }
+        }
     }
 }

@@ -6,7 +6,7 @@ namespace bsm.bll
 {
     public class UserSkillService
     {
-        public static void RemoveUserSkills(User user)
+        public static void DeleteUserSkills(User user)
         {
             using (var context = new BeautySalonContext())
             {

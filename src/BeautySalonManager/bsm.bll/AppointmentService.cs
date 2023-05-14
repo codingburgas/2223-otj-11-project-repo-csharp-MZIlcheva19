@@ -6,7 +6,7 @@ namespace bsm.bll
 {
     public class AppointmentService
     {
-        public static void RemoveUserAppointments(User user)
+        public static void DeleteUserAppointments(User user)
         {
             using (var context = new BeautySalonContext())
             {

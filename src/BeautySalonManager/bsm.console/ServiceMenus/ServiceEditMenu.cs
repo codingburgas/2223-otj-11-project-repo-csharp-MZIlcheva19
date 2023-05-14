@@ -34,7 +34,7 @@ namespace bsm.console
                 {
                     case 'O': break;
                     case 'A': AddGroupMenu.Print(); break;
-                    case 'D': break;
+                    case 'D': DeleteGroupMenu.Print();  break;
                     case 'E': break;
                     case 'B': AdminMenu.Print(); break;
                     default: break;

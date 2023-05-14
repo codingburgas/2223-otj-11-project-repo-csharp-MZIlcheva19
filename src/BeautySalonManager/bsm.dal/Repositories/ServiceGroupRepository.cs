@@ -17,11 +17,25 @@ namespace bsm.dal.Repositories
             return _context.ServiceGroups;
         }
 
+        public ServiceGroup? GetGroupByName(string name)
+        {
+            return _context.ServiceGroups.SingleOrDefault(g => g.Name == name);
+        }
+
         public void AddRow(ServiceGroup serviceGroup) 
         {
             if (serviceGroup != null)
             {
                 _context.ServiceGroups.Add(serviceGroup);
+                _context.SaveChanges();
+            }
+        }
+
+        public void DeleteRow(ServiceGroup serviceGroup)
+        {
+            if (serviceGroup != null)
+            {
+                _context.ServiceGroups.Remove(serviceGroup);
                 _context.SaveChanges();
             }
         }

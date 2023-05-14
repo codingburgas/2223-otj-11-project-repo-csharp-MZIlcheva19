@@ -18,6 +18,30 @@ namespace bsm.bll
             }
         }
 
+        public static ServiceGroup? GetGroupByName(string name)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                ServiceGroupRepository serviceGroupRepository = new(context);
+
+                ServiceGroup? serviceGroup = serviceGroupRepository.GetGroupByName(name);
+
+                return serviceGroup;
+            }
+        }
+
+        public static int GetGroupIdByName(string name)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                ServiceGroupRepository serviceGroupRepository = new(context);
+
+                int serviceGroupId = serviceGroupRepository.GetGroupByName(name).Id;
+
+                return serviceGroupId;
+            }
+        }
+
         public static void AddGroup(string name)
         {
             using (var context = new BeautySalonContext())
@@ -30,6 +54,22 @@ namespace bsm.bll
                 if(serviceGroup != null)
                 {
                     serviceGroupRepository.AddRow(serviceGroup);
+                }
+            }
+        }
+
+        public static void DeleteGroup(string name)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                ServiceGroupRepository serviceGroupRepository = new(context);
+
+                ServiceGroup? serviceGroup = GetGroupByName(name);
+
+                if (serviceGroup != null)
+                {
+                    ServiceService.DeleteAllByGroup(serviceGroup.Id);
+                    serviceGroupRepository.DeleteRow(serviceGroup);
                 }
             }
         }
