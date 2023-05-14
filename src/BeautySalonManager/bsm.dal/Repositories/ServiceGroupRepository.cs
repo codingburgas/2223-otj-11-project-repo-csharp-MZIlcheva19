@@ -31,6 +31,15 @@ namespace bsm.dal.Repositories
             }
         }
 
+        public void UpdateRow(ServiceGroup serviceGroup)
+        {
+            if (serviceGroup != null)
+            {
+                _context.Update(serviceGroup);
+                _context.SaveChanges();
+            }
+        }
+
         public void DeleteRow(ServiceGroup serviceGroup)
         {
             if (serviceGroup != null)

@@ -41,7 +41,7 @@ namespace bsm.dal.Repositories
             }
         }
 
-        public void UpdateUser(User user)
+        public void UpdateRow(User user)
         {
             if(user != null)
             {

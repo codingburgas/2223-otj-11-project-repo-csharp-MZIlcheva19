@@ -58,6 +58,22 @@ namespace bsm.bll
             }
         }
 
+        public static void EditGroup(string oldName, string newName)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                ServiceGroupRepository serviceGroupRepository = new(context);
+
+                ServiceGroup serviceGroup = GetGroupByName(oldName);
+                serviceGroup.Name = newName;
+
+                if(serviceGroup != null)
+                {
+                    serviceGroupRepository.UpdateRow(serviceGroup);
+                }
+            }
+        }
+
         public static void DeleteGroup(string name)
         {
             using (var context = new BeautySalonContext())

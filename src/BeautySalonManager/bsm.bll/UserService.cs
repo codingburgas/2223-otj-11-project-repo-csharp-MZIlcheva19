@@ -99,7 +99,7 @@ namespace bsm.bll
                 user.Phone = phone;
                 user.Email = email;
 
-                userRepository.UpdateUser(user);
+                userRepository.UpdateRow(user);
             }
         }
 
@@ -131,7 +131,7 @@ namespace bsm.bll
                     user.EmployeeRequest = true;
                 }
 
-                userRepository.UpdateUser(user);
+                userRepository.UpdateRow(user);
             }
         }
 
