@@ -1,7 +1,6 @@
 ﻿using bsm.dal.Repositories;
 using bsm.dal.Models;
 using bsm.dal.Data;
-using bsm.dal;
 
 namespace bsm.bll
 {

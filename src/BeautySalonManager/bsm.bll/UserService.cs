@@ -9,6 +9,18 @@ namespace bsm.bll
 {
     public class UserService
     {
+        public static List<User> GetApprovalRequestingUsers()
+        {
+            using (var context = new BeautySalonContext())
+            {
+                UserRepository userRepository = new(context);
+
+                List<User> users = userRepository.GetAll().Where(u => u.EmployeeRequest == true).ToList();
+
+                return users;
+            }
+        }
+
         public static User? GetUserByUsername(string username)
         {
             using (var context = new BeautySalonContext())

@@ -18,6 +18,11 @@ namespace bsm.dal.Repositories
             _context = context;
         }
 
+        public IEnumerable<User> GetAll()
+        {
+            return _context.Users;
+        }
+
         public User? GetUserByUsername(string username)
         {
             User? user = _context

@@ -1,11 +1,6 @@
-﻿using bsm.dal.Data;
+﻿using bsm.dal.Repositories;
 using bsm.dal.Models;
-using bsm.dal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using bsm.dal.Data;
 
 namespace bsm.bll
 {

@@ -1,7 +1,7 @@
 ﻿using bsm.dal.Data;
 using bsm.dal.Models;
 
-namespace bsm.dal
+namespace bsm.dal.Repositories
 {
     public class UserSkillRepository
     {

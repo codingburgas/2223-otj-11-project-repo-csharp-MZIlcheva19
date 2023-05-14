@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bsm.dal
+namespace bsm.dal.Repositories
 {
     public class AppointmentRepository
     {
