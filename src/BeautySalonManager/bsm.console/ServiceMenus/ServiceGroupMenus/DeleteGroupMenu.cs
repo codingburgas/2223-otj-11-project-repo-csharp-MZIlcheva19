@@ -22,7 +22,7 @@ namespace bsm.console
             Console.WriteLine();
             Console.WriteLine("Group Deleted");
             Console.ReadKey();
-            ServiceEditMenu.Print();
+            ServiceGroupEditMenu.Print();
         }
     }
 }

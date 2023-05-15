@@ -17,7 +17,7 @@ namespace bsm.console
             Console.WriteLine();
             Console.WriteLine("Group Added");
             Console.ReadKey();
-            ServiceEditMenu.Print();
+            ServiceGroupEditMenu.Print();
         }
     }
 }

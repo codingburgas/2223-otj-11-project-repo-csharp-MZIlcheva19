@@ -13,7 +13,7 @@
 
                 switch (input)
                 {
-                    case 'S': ServiceEditMenu.Print(); break;
+                    case 'S': ServiceGroupEditMenu.Print(); break;
                     case 'U': Console.WriteLine("Call UsersEditMenu"); /* call UsersEditMenu */ break;
                     case 'B': MainMenu.Print(); break;
                     default: break;

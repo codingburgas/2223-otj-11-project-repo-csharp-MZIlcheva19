@@ -4,7 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace bsm.console
 {
-    internal class ServiceEditMenu
+    internal class ServiceGroupEditMenu
     {
         public static void Print()
         {
@@ -32,7 +32,7 @@ namespace bsm.console
 
                 switch (input)
                 {
-                    case 'O': break;
+                    case 'O': ServiceEditListMenu.PrintAdmin(); break;
                     case 'A': AddGroupMenu.Print(); break;
                     case 'D': DeleteGroupMenu.Print(); break;
                     case 'E': EditGroupMenu.Print(); break;

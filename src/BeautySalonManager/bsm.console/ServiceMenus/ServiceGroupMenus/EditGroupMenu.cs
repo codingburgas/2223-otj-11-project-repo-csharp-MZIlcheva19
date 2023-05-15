@@ -22,7 +22,7 @@ namespace bsm.console
 
             Console.WriteLine();
             Console.WriteLine("Group Edited");
-            ServiceEditMenu.Print();
+            ServiceGroupEditMenu.Print();
         }
     }
 }
