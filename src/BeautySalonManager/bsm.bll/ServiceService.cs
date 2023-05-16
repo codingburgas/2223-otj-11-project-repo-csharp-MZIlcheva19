@@ -23,6 +23,24 @@ namespace bsm.bll
             return GetAll().Where(s => s.GroupId == groupId).ToList();
         }
 
+        public static void AddRow(string name, decimal price, TimeSpan time, int groupId)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                ServiceRepository serviceRepository = new(context);
+
+                Service service = new()
+                {
+                    Name = name,
+                    Price = price,
+                    Time = time,
+                    GroupId = groupId
+                };
+
+                serviceRepository.AddRow(service);
+            }
+        }
+
         public static void DeleteAllByGroup(int groupId)
         {
             List<Service> services = GetAllByGroup(groupId);

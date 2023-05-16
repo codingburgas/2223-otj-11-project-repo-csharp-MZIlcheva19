@@ -32,7 +32,7 @@ namespace bsm.console
 
                 switch (input)
                 {
-                    case 'O': ServiceEditListMenu.PrintAdmin(); break;
+                    case 'O': ServiceEditListMenu.Print(); break;
                     case 'A': AddGroupMenu.Print(); break;
                     case 'D': DeleteGroupMenu.Print(); break;
                     case 'E': EditGroupMenu.Print(); break;

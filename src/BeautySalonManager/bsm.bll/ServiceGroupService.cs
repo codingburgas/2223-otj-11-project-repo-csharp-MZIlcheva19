@@ -42,6 +42,18 @@ namespace bsm.bll
             }
         }
 
+        public static string GetGroupNameById(int groupId)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                ServiceGroupRepository serviceGroupRepository = new(context);
+
+                string serviceGroupName = serviceGroupRepository.GetGroupById(groupId).Name;
+
+                return serviceGroupName;
+            }
+        }
+
         public static void AddGroup(string name)
         {
             using (var context = new BeautySalonContext())

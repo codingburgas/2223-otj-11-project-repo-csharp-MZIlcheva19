@@ -16,5 +16,14 @@ namespace bsm.dal.Repositories
         {
             return _context.Services;
         }
+
+        public void AddRow(Service service)
+        {
+            if (service != null)
+            {
+                _context.Services.Add(service);
+                _context.SaveChanges();
+            }
+        }
     }
 }

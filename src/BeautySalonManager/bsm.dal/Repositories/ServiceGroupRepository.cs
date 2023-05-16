@@ -22,6 +22,11 @@ namespace bsm.dal.Repositories
             return _context.ServiceGroups.SingleOrDefault(g => g.Name == name);
         }
 
+        public ServiceGroup? GetGroupById(int groupId)
+        {
+            return _context.ServiceGroups.SingleOrDefault(g => g.Id == groupId);
+        }
+
         public void AddRow(ServiceGroup serviceGroup) 
         {
             if (serviceGroup != null)

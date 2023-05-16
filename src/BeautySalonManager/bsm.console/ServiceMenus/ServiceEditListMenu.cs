@@ -3,9 +3,9 @@ using bsm.dal.Models;
 
 namespace bsm.console
 {
-    internal class ServiceListMenu
+    internal class ServiceEditListMenu
     {
-        public static void PrintAdmin()
+        public static void Print()
         {
             Console.Clear();
             Console.WriteLine("Services");
@@ -31,10 +31,10 @@ namespace bsm.console
 
                 switch (input)
                 {
-                    case 'A': break;
+                    case 'A': AddServiceMenu.Print(groupId); break;
                     case 'E': break;
                     case 'D': break;
-                    case 'B': break;
+                    case 'B': ServiceGroupEditMenu.Print(); break;
                     default: break;
                 }
             }
