@@ -11,13 +11,16 @@ namespace bsm.console
             {
                 Console.Write("[E] EditUser  [D] DeleteUser  ");
             }
-            if(UserLog.LoggedUser.EmployeeRequest == true)
+            if(UserLog.LoggedUser.TypeId == (int)TypeCodes.Client)
             {
-                Console.Write("[R] RemoveEmployeeRequest  ");
-            }
-            else
-            {
-                Console.Write("[R] RequestEmployee  ");
+                if (UserLog.LoggedUser.EmployeeRequest == true)
+                {
+                    Console.Write("[R] RemoveEmployeeRequest  ");
+                }
+                else
+                {
+                    Console.Write("[R] RequestEmployee  ");
+                }
             }
             Console.WriteLine("[L] LogOut  [B] Back");
 

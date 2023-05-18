@@ -1,4 +1,6 @@
-﻿namespace bsm.console
+﻿using bsm.console.UserMenus;
+
+namespace bsm.console
 {
     internal class AdminMenu
     {
@@ -14,7 +16,7 @@
                 switch (input)
                 {
                     case 'S': ServiceGroupEditMenu.Print(); break;
-                    case 'U': Console.WriteLine("Call UsersEditMenu"); /* call UsersEditMenu */ break;
+                    case 'U': UserAdminMenu.Print(); break;
                     case 'B': MainMenu.Print(); break;
                     default: break;
                 }

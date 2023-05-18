@@ -134,6 +134,19 @@ namespace bsm.bll
                 userRepository.UpdateRow(user);
             }
         }
+        
+        public static void MakeEmployee(User user)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                UserRepository userRepository = new(context);
+
+                user.TypeId = (int)TypeCodes.Employee;
+                user.EmployeeRequest = false;
+
+                userRepository.UpdateRow(user);
+            }
+        }
 
         public static void AddAdmin()
         {
