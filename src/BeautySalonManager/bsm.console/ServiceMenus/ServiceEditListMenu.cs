@@ -11,6 +11,7 @@ namespace bsm.console
             Console.WriteLine("Services");
             Console.WriteLine();
 
+            Console.Write("Insert group name: ");
             string group = Console.ReadLine();
 
             int groupId = ServiceGroupService.GetGroupIdByName(group);
@@ -19,7 +20,7 @@ namespace bsm.console
 
             foreach ( Service service in services )
             {
-                Console.WriteLine($"{service.Name} : {service.Price} : {service.Time.ToString("g")}");
+                Console.WriteLine($"{service.Name} : {service.Price:F2}$ : {service.Time.ToString("mm")} min");
             }
 
             Console.WriteLine();
@@ -32,8 +33,8 @@ namespace bsm.console
                 switch (input)
                 {
                     case 'A': AddServiceMenu.Print(groupId); break;
-                    case 'E': break;
-                    case 'D': break;
+                    case 'E': EditServiceMenu.Print(groupId); break;
+                    case 'D': DeleteServiceMenu.Print(groupId); break;
                     case 'B': ServiceGroupEditMenu.Print(); break;
                     default: break;
                 }

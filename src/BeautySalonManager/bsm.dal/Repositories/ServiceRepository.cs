@@ -25,5 +25,23 @@ namespace bsm.dal.Repositories
                 _context.SaveChanges();
             }
         }
+
+        public void UpdateRow(Service service)
+        {
+            if (service != null)
+            {
+                _context.Services.Update(service);
+                _context.SaveChanges();
+            }
+        }
+
+        public void DeleteRow(Service service)
+        {
+            if (service != null)
+            {
+                _context.Services.Remove(service);
+                _context.SaveChanges();
+            }
+        }
     }
 }

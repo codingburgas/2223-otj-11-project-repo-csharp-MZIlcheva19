@@ -23,6 +23,11 @@ namespace bsm.bll
             return GetAll().Where(s => s.GroupId == groupId).ToList();
         }
 
+        public static Service GetServiceByName(string name, int groupId)
+        {
+            return GetAll().FirstOrDefault(s => s.Name.ToUpper() == name.ToUpper() && s.GroupId == groupId);
+        }
+
         public static void AddRow(string name, decimal price, TimeSpan time, int groupId)
         {
             using (var context = new BeautySalonContext())
@@ -41,13 +46,42 @@ namespace bsm.bll
             }
         }
 
+        public static void EditRow(Service service, string name, decimal price, TimeSpan time)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                ServiceRepository serviceRepository = new(context);
+
+                service.Name = name;
+                service.Price = price;
+                service.Time = time;
+
+                serviceRepository.UpdateRow(service);
+            }
+        }
+
+        public static void DeleteRow(Service service)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                ServiceRepository serviceRepository = new(context);
+
+                serviceRepository.DeleteRow(service);
+            }
+        }
+
         public static void DeleteAllByGroup(int groupId)
         {
-            List<Service> services = GetAllByGroup(groupId);
-
-            foreach (Service service in services)
+            using (var context = new BeautySalonContext())
             {
-                ServiceSkillService.DeleteAllByService(service.Id);
+                ServiceRepository serviceRepository = new(context);
+                List<Service> services = GetAllByGroup(groupId);
+
+                foreach (Service service in services)
+                {
+                    ServiceSkillService.DeleteAllByService(service.Id);
+                    serviceRepository.DeleteRow(service);
+                }
             }
         }
     }
