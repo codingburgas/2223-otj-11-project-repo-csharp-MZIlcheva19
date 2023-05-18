@@ -36,7 +36,7 @@ namespace bsm.console
                     case 'E': EditServiceMenu.Print(groupId); break;
                     case 'D': DeleteServiceMenu.Print(groupId); break;
                     case 'B': ServiceGroupEditMenu.Print(); break;
-                    default: break;
+                    default: ServiceGroupEditMenu.Print(); break;
                 }
             }
         }
