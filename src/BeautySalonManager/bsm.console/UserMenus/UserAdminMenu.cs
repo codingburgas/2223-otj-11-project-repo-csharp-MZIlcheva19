@@ -14,18 +14,8 @@ namespace bsm.console.UserMenus
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("Employee Requests");
             Console.WriteLine();
-
-            List<User> users = UserService.GetApprovalRequestingUsers();
-
-            foreach(User user in users)
-            {
-                Console.WriteLine($"{user.Username} {user.FirstName} {user.LastName} {user.Phone} {user.Email}");
-            }
-
-            Console.WriteLine();
-            Console.WriteLine("[A] Approve User  [B] Back");
+            Console.WriteLine("[A] Approve User  [R] Remove Employee  [B] Back");
             while (true)
             {
                 var input = char.ToUpper(Console.ReadKey().KeyChar);
@@ -33,6 +23,7 @@ namespace bsm.console.UserMenus
                 switch (input)
                 {
                     case 'A': ApproveUserMenu.Print(); break;
+                    case 'R': RemoveEmployeeMenu.Print(); break;
                     case 'B': OptionsMenu.Print(); break;
                     default: break;
                 }

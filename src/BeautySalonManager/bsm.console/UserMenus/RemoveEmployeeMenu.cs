@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace bsm.console.UserMenus
 {
-    internal class ApproveUserMenu
+    internal class RemoveEmployeeMenu
     {
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("Aprrove User");
+            Console.WriteLine("Remove Employee");
             Console.WriteLine();
 
-            List<User> users = UserService.GetApprovalRequestingUsers();
+            List<User> users = UserService.GetEmployees();
 
             foreach (User u in users)
             {
@@ -27,11 +27,11 @@ namespace bsm.console.UserMenus
             string username = Console.ReadLine();
 
             User user = UserService.GetUserByUsername(username);
-            UserService.MakeEmployee(user);
-            
+            UserService.MakeClient(user);
+
 
             Console.WriteLine();
-            Console.WriteLine("Employee Added");
+            Console.WriteLine("Employee Removed");
             UserAdminMenu.Print();
         }
     }

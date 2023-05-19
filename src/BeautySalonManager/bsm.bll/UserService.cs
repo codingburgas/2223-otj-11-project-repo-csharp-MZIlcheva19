@@ -9,6 +9,18 @@ namespace bsm.bll
 {
     public class UserService
     {
+        public static List<User> GetEmployees()
+        {
+            using (var context = new BeautySalonContext())
+            {
+                UserRepository userRepository = new(context);
+
+                List<User> userList = userRepository.GetAll().Where(u => u.TypeId == (int)TypeCodes.Employee).ToList();
+
+                return userList;
+            }
+        }
+
         public static List<User> GetApprovalRequestingUsers()
         {
             using (var context = new BeautySalonContext())
@@ -142,6 +154,19 @@ namespace bsm.bll
                 UserRepository userRepository = new(context);
 
                 user.TypeId = (int)TypeCodes.Employee;
+                user.EmployeeRequest = false;
+
+                userRepository.UpdateRow(user);
+            }
+        }
+
+        public static void MakeClient(User user)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                UserRepository userRepository = new(context);
+
+                user.TypeId = (int)TypeCodes.Client;
                 user.EmployeeRequest = false;
 
                 userRepository.UpdateRow(user);
