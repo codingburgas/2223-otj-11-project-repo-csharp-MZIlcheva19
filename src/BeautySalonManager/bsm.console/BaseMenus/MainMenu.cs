@@ -27,8 +27,8 @@ namespace bsm.console
 
                 switch (input)
                 {
-                    case 'S': Console.WriteLine("Call ServicesMenu"); /* call ServicesMenu */ break;
-                    case 'O': Console.WriteLine("Call OptionsMenu"); OptionsMenu.Print(); break;
+                    case 'S': ServiceGroupListMenu.Print(); break;
+                    case 'O': OptionsMenu.Print(); break;
                     case 'K': if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Employee) EmployeeSkillsMenu.Print(); break;
                     case 'A': if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Admin) AdminMenu.Print(); break;
                     case 'E': Environment.Exit(0); break;

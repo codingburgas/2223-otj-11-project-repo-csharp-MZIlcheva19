@@ -1,9 +1,14 @@
 ﻿using bsm.bll;
 using bsm.dal.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace bsm.console
 {
-    internal class ServiceEditListMenu
+    internal class ServiceListMenu
     {
         public static void Print()
         {
@@ -18,13 +23,13 @@ namespace bsm.console
 
             List<Service> services = ServiceService.GetAllByGroup(groupId).ToList();
 
-            foreach ( Service service in services )
+            foreach (Service service in services)
             {
                 Console.WriteLine($"{service.Name} : {service.Price:F2}$ : {service.Time.Hours * 60 + service.Time.Minutes} min");
             }
 
             Console.WriteLine();
-            Console.WriteLine("[A] Add Service  [E] Edit Service  [D] Delete Service  [B] Back");
+            Console.WriteLine("[A] Make Appointment  [B] Back");
 
             while (true)
             {
@@ -32,11 +37,9 @@ namespace bsm.console
 
                 switch (input)
                 {
-                    case 'A': AddServiceMenu.Print(groupId); break;
-                    case 'E': EditServiceMenu.Print(groupId); break;
-                    case 'D': DeleteServiceMenu.Print(groupId); break;
-                    case 'B': ServiceGroupEditMenu.Print(); break;
-                    default: ServiceGroupEditMenu.Print(); break;
+                    case 'A': break;
+                    case 'B': ServiceGroupListMenu.Print(); break;
+                    default: ServiceGroupListMenu.Print(); break;
                 }
             }
         }
