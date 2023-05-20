@@ -11,12 +11,27 @@ namespace bsm.dal.Repositories
         {
             _context = context;
         }
+
+        public IEnumerable<UserSkill> GetAll()
+        {
+            return _context.UserSkills;
+        }
+
         public IEnumerable<UserSkill> GetAllByUserId(int userId)
         {
             IEnumerable<UserSkill> list = _context.UserSkills
                 .Where(a => a.UserId == userId);
 
             return list;
+        }
+
+        public void AddRow(UserSkill userSkill)
+        {
+            if (userSkill != null)
+            {
+                _context.UserSkills.Add(userSkill);
+                _context.SaveChanges();
+            }
         }
 
         public void DeleteRow(UserSkill userSkill)

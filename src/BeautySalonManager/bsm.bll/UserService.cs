@@ -122,7 +122,7 @@ namespace bsm.bll
                 UserRepository userRepository = new(context);
 
                 AppointmentService.DeleteUserAppointments(user);    
-                UserSkillService.DeleteUserSkills(user);
+                UserSkillService.DeleteAllUsersSkills(user);
 
                 userRepository.DeleteRow(user);
             }

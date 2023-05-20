@@ -26,6 +26,32 @@ namespace bsm.bll
             }
         }
 
+        public static List<Skill> GetUsersSkills(int userId)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                SkillRepository skillRepository = new(context);
+
+                List<UserSkill> userSkills = UserSkillService.GetAllByUser(userId);
+                List<Skill> skills = skillRepository.GetAll().ToList();
+                List<Skill> result = new List<Skill>();
+
+                foreach (Skill skill in skills)
+                {
+                    foreach (UserSkill userSkill in userSkills)
+                    {
+                        if (skill.Id == userSkill.SkillId)
+                        {
+                            result.Add(skill);
+                            break;
+                        }
+                    }
+                }
+
+                return result;
+            }
+        }
+
         public static void AddRow(string name)
         {
             using (var context = new BeautySalonContext())
