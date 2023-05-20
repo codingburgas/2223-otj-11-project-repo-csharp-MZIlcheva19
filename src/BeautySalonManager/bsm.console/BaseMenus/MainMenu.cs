@@ -29,6 +29,7 @@ namespace bsm.console
                 {
                     case 'S': Console.WriteLine("Call ServicesMenu"); /* call ServicesMenu */ break;
                     case 'O': Console.WriteLine("Call OptionsMenu"); OptionsMenu.Print(); break;
+                    case 'K': if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Employee) Console.WriteLine("Call skills menu"); break;
                     case 'A': if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Admin) AdminMenu.Print(); break;
                     case 'E': Environment.Exit(0); break;
                     default: break;

@@ -7,7 +7,7 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("[S] Services  [U] Users  [B] Back");
+            Console.WriteLine("[S] Services  [K] Skills  [U] Users  [B] Back");
 
             while (true)
             {
@@ -16,6 +16,7 @@ namespace bsm.console
                 switch (input)
                 {
                     case 'S': ServiceGroupEditMenu.Print(); break;
+                    case 'K': SkillsEditMenu.Print(); break;
                     case 'U': UserAdminMenu.Print(); break;
                     case 'B': MainMenu.Print(); break;
                     default: break;

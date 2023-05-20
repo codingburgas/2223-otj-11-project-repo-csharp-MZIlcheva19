@@ -24,7 +24,7 @@ namespace bsm.console
             ServiceService.AddRow(name, price, time, groupId);
 
             Console.WriteLine();
-            Console.WriteLine("Service Added");
+            Console.WriteLine("Skill Added");
             ServiceEditListMenu.Print();
         }
     }
