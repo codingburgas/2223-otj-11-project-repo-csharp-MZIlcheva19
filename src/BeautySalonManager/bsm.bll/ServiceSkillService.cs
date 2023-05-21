@@ -25,6 +25,12 @@ namespace bsm.bll
             return serviceSkills;
         }
 
+        public static List<ServiceSkill> GetAllBySkillId(int skillId)
+        {
+            List<ServiceSkill> serviceSkills = GetAll().Where(s => s.SkillId == skillId).ToList();
+            return serviceSkills;
+        }
+
         public static void AddServiceSkill(int groupId, string serviceName, string skillName)
         {
             using (var context = new BeautySalonContext())
@@ -66,6 +72,21 @@ namespace bsm.bll
                 ServiceSkillRepository serviceSkillRepository = new(context);
 
                 List<ServiceSkill> serviceSkills = GetAllByServiceId(serviceId);
+
+                foreach (var serviceSkill in serviceSkills)
+                {
+                    serviceSkillRepository.DeleteRow(serviceSkill);
+                }
+            }
+        }
+
+        public static void DeleteAllBySkill(int skillId)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                ServiceSkillRepository serviceSkillRepository = new(context);
+
+                List<ServiceSkill> serviceSkills = GetAllBySkillId(skillId);
 
                 foreach (var serviceSkill in serviceSkills)
                 {

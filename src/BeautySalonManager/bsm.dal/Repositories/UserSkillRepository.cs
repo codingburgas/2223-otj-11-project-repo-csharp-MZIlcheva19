@@ -25,6 +25,14 @@ namespace bsm.dal.Repositories
             return list;
         }
 
+        public IEnumerable<UserSkill> GetAllBySkillId(int skillId)
+        {
+            IEnumerable<UserSkill> list = _context.UserSkills
+                .Where(a => a.SkillId == skillId);
+
+            return list;
+        }
+
         public void AddRow(UserSkill userSkill)
         {
             if (userSkill != null)

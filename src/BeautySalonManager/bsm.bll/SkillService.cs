@@ -100,6 +100,8 @@ namespace bsm.bll
                 SkillRepository skillRepository = new(context);
 
                 Skill skill = skillRepository.GetSkillByName(name);
+                UserSkillService.DeleteAllSkillsRows(skill);
+                ServiceSkillService.DeleteAllBySkill(skill.Id);
 
                 skillRepository.DeleteRow(skill);
             }

@@ -66,6 +66,21 @@ namespace bsm.bll
             }
         }
 
+        public static void DeleteAllSkillsRows(Skill skill)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                UserSkillRepository userSkillRepository = new(context);
+
+                List<UserSkill> userSkills = userSkillRepository.GetAllBySkillId(skill.Id).ToList();
+
+                foreach (UserSkill userSkill in userSkills)
+                {
+                    userSkillRepository.DeleteRow(userSkill);
+                }
+            }
+        }
+
         public static bool UserSkillExists(UserSkill userSkill)
         {
             using (var context = new BeautySalonContext())

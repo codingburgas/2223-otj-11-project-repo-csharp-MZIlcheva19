@@ -1,6 +1,7 @@
 ﻿using bsm.dal.Repositories;
 using bsm.dal.Models;
 using bsm.dal.Data;
+using System.Collections.Generic;
 
 namespace bsm.bll
 {
@@ -29,7 +30,22 @@ namespace bsm.bll
                 {
                     List<Skill> employeeSkills = SkillService.GetUsersSkills(employee.Id);
 
-                    if (employeeSkills.SequenceEqual(serviceSkills))
+                    List<bool> skillsFlags = new List<bool>();
+                    for (int i = 0; i < serviceSkills.Count; i++)
+                    {
+                        bool flag = false;
+                        foreach(Skill skill in employeeSkills)
+                        {
+                            if(skill.Id == serviceSkills[i].Id)
+                            {
+                                flag = true;
+                                break;
+                            }
+                        }
+                        skillsFlags.Add(flag);
+                    }
+
+                    if (skillsFlags.Where(c => c).Count() == serviceSkills.Count)
                     {
                         checkEmployees = true;
                         appointment.EmployeeId = employee.Id;
