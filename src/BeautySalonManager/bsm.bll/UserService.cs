@@ -166,6 +166,7 @@ namespace bsm.bll
             {
                 UserRepository userRepository = new(context);
 
+                UserSkillService.DeleteAllUsersSkills(user);
                 user.TypeId = (int)TypeCodes.Client;
                 user.EmployeeRequest = false;
 

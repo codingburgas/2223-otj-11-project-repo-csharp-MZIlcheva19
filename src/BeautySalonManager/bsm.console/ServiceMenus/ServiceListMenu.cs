@@ -37,7 +37,7 @@ namespace bsm.console
 
                 switch (input)
                 {
-                    case 'A': break;
+                    case 'A': MakeAppointmentMenu.Print(groupId); break;
                     case 'B': ServiceGroupListMenu.Print(); break;
                     default: ServiceGroupListMenu.Print(); break;
                 }

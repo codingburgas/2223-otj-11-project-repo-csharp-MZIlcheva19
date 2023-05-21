@@ -25,6 +25,15 @@ namespace bsm.dal.Repositories
             return list;
         }
 
+        public void AddRow(Appointment appointment) 
+        {
+            if (appointment != null)
+            {
+                _context.Appointments.Add(appointment);
+                _context.SaveChanges();
+            }
+        }
+
         public void DeleteRow(Appointment appointment)
         {
             if(appointment != null)

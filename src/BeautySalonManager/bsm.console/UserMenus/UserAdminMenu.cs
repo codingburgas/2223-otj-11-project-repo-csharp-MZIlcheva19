@@ -24,7 +24,7 @@ namespace bsm.console.UserMenus
                 {
                     case 'A': ApproveUserMenu.Print(); break;
                     case 'R': RemoveEmployeeMenu.Print(); break;
-                    case 'B': OptionsMenu.Print(); break;
+                    case 'B': AdminMenu.Print(); break;
                     default: break;
                 }
             }
