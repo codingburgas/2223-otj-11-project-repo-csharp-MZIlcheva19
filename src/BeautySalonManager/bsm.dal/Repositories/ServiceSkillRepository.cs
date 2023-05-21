@@ -22,6 +22,15 @@ namespace bsm.dal.Repositories
             return _context.ServiceSkills;
         }
 
+        public void AddRow(ServiceSkill serviceSkill)
+        {
+            if (serviceSkill != null)
+            {
+                _context.ServiceSkills.Add(serviceSkill);
+                _context.SaveChanges();
+            }
+        }
+
         public void DeleteRow(ServiceSkill serviceSkill)
         {
             if (serviceSkill != null)

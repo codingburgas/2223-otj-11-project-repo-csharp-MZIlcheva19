@@ -11,8 +11,17 @@ namespace bsm.console
             Console.WriteLine("Services");
             Console.WriteLine();
 
+            List<ServiceGroup> serviceGroups = ServiceGroupService.GetAll();
+
+            foreach (ServiceGroup serviceGroup in serviceGroups)
+            { 
+                Console.WriteLine(serviceGroup.Name);
+            }
+            Console.WriteLine();
+
             Console.Write("Insert group name: ");
-            string group = Console.ReadLine();
+            string group = Console.ReadLine(); 
+            Console.WriteLine();
 
             int groupId = ServiceGroupService.GetGroupIdByName(group);
 
@@ -24,7 +33,7 @@ namespace bsm.console
             }
 
             Console.WriteLine();
-            Console.WriteLine("[A] Add Service  [E] Edit Service  [D] Delete Service  [B] Back");
+            Console.WriteLine("[S] See Skills  [A] Add Service  [E] Edit Service  [D] Delete Service  [B] Back");
 
             while (true)
             {
@@ -32,6 +41,7 @@ namespace bsm.console
 
                 switch (input)
                 {
+                    case 'S': ServiceSkillListMenu.Print(groupId); break;
                     case 'A': AddServiceMenu.Print(groupId); break;
                     case 'E': EditServiceMenu.Print(groupId); break;
                     case 'D': DeleteServiceMenu.Print(groupId); break;
