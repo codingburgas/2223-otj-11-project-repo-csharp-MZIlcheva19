@@ -21,6 +21,16 @@ namespace bsm.bll
             }
         }
 
+        public static User GetUserById(int userId)
+        {
+            using (var context = new BeautySalonContext())
+            {
+                UserRepository userRepository = new(context);
+
+                return userRepository.GetAll().FirstOrDefault(u => u.Id == userId);
+            }
+        }
+
         public static List<User> GetApprovalRequestingUsers()
         {
             using (var context = new BeautySalonContext())

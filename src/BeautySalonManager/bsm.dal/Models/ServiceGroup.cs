@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace bsm.dal.Models;
 
-[Index("Name", Name = "UQ__ServiceG__737584F6EBEDBAAD", IsUnique = true)]
+[Index("Name", Name = "UQ__ServiceG__737584F68599E133", IsUnique = true)]
 public partial class ServiceGroup
 {
     [Key]

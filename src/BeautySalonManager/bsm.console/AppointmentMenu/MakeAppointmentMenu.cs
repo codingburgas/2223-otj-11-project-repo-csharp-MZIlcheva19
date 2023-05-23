@@ -15,11 +15,12 @@ namespace bsm.console
         {
             Console.Clear();
             Console.WriteLine("Create Appointment");
+            Console.WriteLine();
 
             string service = Console.ReadLine();
-            Console.WriteLine("dd.MM.yyyy");
+            Console.WriteLine("Date and time: dd.MM.yyyy:HH.mm");
             DateTime date;
-            DateTime.TryParseExact(Console.ReadLine(), "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date);
+            DateTime.TryParseExact(Console.ReadLine(), "dd.MM.yyyy:HH.mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out date);
 
             if(AppointmentService.CreateAppointment(date, groupId, service, UserLog.LoggedUser.Id))
             {

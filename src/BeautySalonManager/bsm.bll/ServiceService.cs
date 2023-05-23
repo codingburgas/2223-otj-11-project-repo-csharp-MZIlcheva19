@@ -18,6 +18,11 @@ namespace bsm.bll
             }
         }
 
+        public static Service GetServiceById(int id)
+        {
+            return GetAll().FirstOrDefault(s => s.Id == id);
+        }
+
         public static List<Service> GetAllByGroup(int groupId)
         {
             return GetAll().Where(s => s.GroupId == groupId).ToList();

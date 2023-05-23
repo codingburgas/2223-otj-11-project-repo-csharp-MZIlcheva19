@@ -1,16 +1,12 @@
 CREATE DATABASE BeautySalon
-GO
 
 USE BeautySalon
-GO
 
 CREATE TABLE [Skills] (
 	[Id] int PRIMARY KEY IDENTITY(1,1),
 	[Name] varchar(50) NOT NULL UNIQUE
 )
 
-/* One to many with UserTypes */
-/* Many to many with Skills */
 CREATE TABLE [Users] (
 	[Id] int PRIMARY KEY IDENTITY(1,1),
 	[Username] varchar(50) NOT NULL UNIQUE, 
@@ -29,7 +25,6 @@ CREATE TABLE [ServiceGroups] (
 	[Name] varchar(50) NOT NULL UNIQUE
 )
 
-/* Many to many with Skills */
 CREATE TABLE [Services] (
 	[Id] int PRIMARY KEY IDENTITY(1,1),
 	[Name] varchar(50) NOT NULL UNIQUE, 
@@ -38,16 +33,14 @@ CREATE TABLE [Services] (
 	[GroupId] int FOREIGN KEY REFERENCES [ServiceGroups]([Id]) NOT NULL
 )
 
-/* One to many with Services and Users */
 CREATE TABLE [Appointments] (
 	[Id] int PRIMARY KEY IDENTITY(1,1),
-	[Date] date NOT NULL,
+	[Date] datetime NOT NULL,
 	[ServiceId] int FOREIGN KEY REFERENCES [Services]([Id]) NOT NULL,
 	[CustomerId] int FOREIGN KEY REFERENCES [Users]([Id]) NOT NULL,
 	[EmployeeId] int FOREIGN KEY REFERENCES [Users]([Id]) NOT NULL,
 )
 
-/* Cross table of Users and Skills */
 CREATE TABLE [UserSkills] (
 	[Id] int PRIMARY KEY IDENTITY(1,1),
 	[UserId] int,
@@ -56,7 +49,6 @@ CREATE TABLE [UserSkills] (
 	FOREIGN KEY ([SkillId]) REFERENCES [Skills]([Id])
 )
 
-/* Cross table of Services and Skills */
 CREATE TABLE [ServiceSkills] (
 	[Id] int PRIMARY KEY IDENTITY(1,1),
 	[ServiceId] int,

@@ -17,6 +17,11 @@ namespace bsm.dal.Repositories
             _context = context;
         }
 
+        public IEnumerable<Appointment> GetAll()
+        {
+            return _context.Appointments;
+        }
+
         public IEnumerable<Appointment> GetAllByUserId(int userId)
         {
             IEnumerable<Appointment> list = _context.Appointments

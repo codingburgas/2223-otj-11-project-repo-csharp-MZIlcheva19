@@ -7,6 +7,16 @@ namespace bsm.bll
 {
     public class AppointmentService
     {
+        public static List<Appointment> GetAll()
+        {
+            using (var context = new BeautySalonContext())
+            {
+                AppointmentRepository appointmentRepository = new(context);
+
+                return appointmentRepository.GetAll().ToList();
+            }
+        }
+
         public static bool CreateAppointment(DateTime date, int groupId, string serviceName, int customerId)
         {
             using (var context = new BeautySalonContext())

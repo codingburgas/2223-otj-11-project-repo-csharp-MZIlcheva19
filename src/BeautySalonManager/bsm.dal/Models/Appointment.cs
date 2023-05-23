@@ -11,7 +11,7 @@ public partial class Appointment
     [Key]
     public int Id { get; set; }
 
-    [Column(TypeName = "date")]
+    [Column(TypeName = "datetime")]
     public DateTime Date { get; set; }
 
     public int ServiceId { get; set; }
