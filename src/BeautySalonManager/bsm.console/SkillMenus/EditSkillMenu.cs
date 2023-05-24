@@ -16,7 +16,9 @@ namespace bsm.console
             Console.WriteLine("Edit Skill");
             Console.WriteLine();
 
+            Console.WriteLine("Old Skill Name: ");
             string oldName = Console.ReadLine();
+            Console.WriteLine("New Skill Name: ");
             string newName = Console.ReadLine();
 
             SkillService.EditRow(oldName, newName);

@@ -11,7 +11,9 @@ namespace bsm.console
             Console.WriteLine("Login User");
             Console.WriteLine();
 
+            Console.Write("Username: ");
             string username = Console.ReadLine();
+            Console.Write("Password: ");
             string password = Console.ReadLine();
 
             if (!UserService.LoginUser(username, password))

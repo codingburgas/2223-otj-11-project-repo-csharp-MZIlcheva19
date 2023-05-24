@@ -16,7 +16,7 @@ namespace bsm.console
             Console.WriteLine("Services");
             Console.WriteLine();
 
-            Console.Write("Insert group name: ");
+            Console.Write("Group Name: ");
             string group = Console.ReadLine();
 
             int groupId = ServiceGroupService.GetGroupIdByName(group);

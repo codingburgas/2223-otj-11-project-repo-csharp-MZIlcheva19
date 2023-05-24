@@ -25,6 +25,7 @@ namespace bsm.console
             }
             Console.WriteLine();
 
+            Console.WriteLine("Skill Name: ");
             string name = Console.ReadLine();
 
             UserSkillService.RemoveSkill(UserLog.LoggedUser, name);

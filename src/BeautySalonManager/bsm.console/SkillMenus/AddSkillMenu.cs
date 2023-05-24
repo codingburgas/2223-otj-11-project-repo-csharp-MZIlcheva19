@@ -15,6 +15,7 @@ namespace bsm.console
             Console.WriteLine("Add Skill");
             Console.WriteLine();
 
+            Console.WriteLine("Skill Name: ");
             string name = Console.ReadLine();
 
             SkillService.AddRow(name);

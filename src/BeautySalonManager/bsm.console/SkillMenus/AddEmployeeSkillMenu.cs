@@ -1,6 +1,7 @@
 ﻿using bsm.bll;
 using bsm.dal.Models;
 using bsm.util;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +20,21 @@ namespace bsm.console
 
             List<Skill> skills = SkillService.GetAll();
 
-            foreach (Skill skill in skills)
+            if(!skills.IsNullOrEmpty())
             {
-                Console.WriteLine(skill.Name);
+                foreach (Skill skill in skills)
+                {
+                    Console.WriteLine(skill.Name);
+                }
+                Console.WriteLine();
             }
-            Console.WriteLine();
+            else
+            {
+                Console.WriteLine("No skills added");
+                Console.WriteLine();
+            }
 
+            Console.WriteLine("Skill name: ");
             string name = Console.ReadLine();
 
             UserSkillService.AddSkillToUser(UserLog.LoggedUser, name);

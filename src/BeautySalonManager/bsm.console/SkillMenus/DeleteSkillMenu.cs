@@ -15,6 +15,7 @@ namespace bsm.console
             Console.WriteLine("Delete Skill");
             Console.WriteLine();
 
+            Console.WriteLine("Skill Name: ");
             string name = Console.ReadLine();
 
             SkillService.DeleteSkill(name);

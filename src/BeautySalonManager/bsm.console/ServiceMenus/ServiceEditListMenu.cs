@@ -1,5 +1,6 @@
 ﻿using bsm.bll;
 using bsm.dal.Models;
+using Microsoft.IdentityModel.Tokens;
 
 namespace bsm.console
 {
@@ -13,13 +14,22 @@ namespace bsm.console
 
             List<ServiceGroup> serviceGroups = ServiceGroupService.GetAll();
 
-            foreach (ServiceGroup serviceGroup in serviceGroups)
-            { 
-                Console.WriteLine(serviceGroup.Name);
+            if(!serviceGroups.IsNullOrEmpty())
+            {
+                Console.WriteLine("Service Name");
+                foreach (ServiceGroup serviceGroup in serviceGroups)
+                {
+                    Console.WriteLine(serviceGroup.Name);
+                }
+                Console.WriteLine();
             }
-            Console.WriteLine();
+            else
+            {
+                Console.WriteLine("No Services");
+                Console.WriteLine();
+            }
 
-            Console.Write("Insert group name: ");
+            Console.Write("Group Name: ");
             string group = Console.ReadLine(); 
             Console.WriteLine();
 
