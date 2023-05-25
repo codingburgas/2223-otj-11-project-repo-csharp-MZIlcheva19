@@ -10,6 +10,7 @@ namespace bsm.console
             Console.WriteLine("Add Group");
             Console.WriteLine();
 
+            Console.Write("Group Name: ");
             string name = Console.ReadLine();
 
             ServiceGroupService.AddGroup(name);

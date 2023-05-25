@@ -15,7 +15,9 @@ namespace bsm.console
             Console.WriteLine("Edit Group");
             Console.WriteLine();
 
+            Console.Write("Group Old Name: ");
             string oldName = Console.ReadLine();
+            Console.Write("Group New Name: ");
             string newName = Console.ReadLine();
 
             ServiceGroupService.EditGroup(oldName, newName);

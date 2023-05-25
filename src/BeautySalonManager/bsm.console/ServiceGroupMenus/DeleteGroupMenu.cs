@@ -15,6 +15,7 @@ namespace bsm.console
             Console.WriteLine("Delete Group");
             Console.WriteLine();
 
+            Console.Write("Group Name: ");
             string name = Console.ReadLine();
 
             ServiceGroupService.DeleteGroup(name);

@@ -17,6 +17,7 @@ namespace bsm.console
             Console.WriteLine("Create Appointment");
             Console.WriteLine();
 
+            Console.Write("Service Name: ");
             string service = Console.ReadLine();
             Console.WriteLine("Date and time: dd.MM.yyyy:HH.mm");
             DateTime date;
@@ -24,11 +25,11 @@ namespace bsm.console
 
             if(AppointmentService.CreateAppointment(date, groupId, service, UserLog.LoggedUser.Id))
             {
-                Console.WriteLine("\nCreated");
+                Console.WriteLine("\nAppointment Created");
             }
             else
             {
-                Console.WriteLine("\nNot created");
+                Console.WriteLine("\nnAppointment Not Created");
             }
 
             Console.ReadKey();

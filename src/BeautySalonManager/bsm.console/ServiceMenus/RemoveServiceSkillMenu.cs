@@ -1,5 +1,6 @@
 ﻿using bsm.bll;
 using bsm.dal.Models;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +19,20 @@ namespace bsm.console
 
             List<Skill> skillList = SkillService.GetServicesSkills(service.Id);
 
-            foreach (Skill skill in skillList)
+            if (!skillList.IsNullOrEmpty())
             {
-                Console.WriteLine(skill.Name);
+                Console.WriteLine("Service Name");
+                foreach (Skill skill in skillList)
+                {
+                    Console.WriteLine(skill.Name);
+                }
+                Console.WriteLine();
             }
-            Console.WriteLine();
+            else
+            {
+                Console.WriteLine("No Services");
+                Console.WriteLine();
+            }
 
             Console.Write("Skill Name: ");
             string skillName = Console.ReadLine();

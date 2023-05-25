@@ -17,6 +17,7 @@ namespace bsm.console
             Console.WriteLine(ServiceGroupService.GetGroupNameById(groupId));
             Console.WriteLine();
 
+            Console.Write("Service Name: ");
             string serviceName = Console.ReadLine();
 
             Service service = ServiceService.GetServiceByName(serviceName, groupId);

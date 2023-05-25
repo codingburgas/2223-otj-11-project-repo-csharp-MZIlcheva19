@@ -16,7 +16,9 @@ namespace bsm.console
             Console.WriteLine(ServiceGroupService.GetGroupNameById(groupId));
             Console.WriteLine();
 
+            Console.Write("Service Name: ");
             string name = Console.ReadLine();
+            Console.Write("Service Price: ");
             decimal price = decimal.Parse(Console.ReadLine());
             Console.WriteLine("\nInput only minutes");
             TimeSpan time = TimeSpan.FromMinutes(int.Parse(Console.ReadLine()));
