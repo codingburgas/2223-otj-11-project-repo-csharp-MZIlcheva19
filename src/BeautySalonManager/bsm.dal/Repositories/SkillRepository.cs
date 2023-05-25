@@ -36,20 +36,20 @@ namespace bsm.dal.Repositories
             }
         }
 
-        public void DeleteRow(Skill skill)
-        {
-            if (skill != null)
-            {
-                _context.Skills.Remove(skill);
-                _context.SaveChanges();
-            }
-        }
-
         public void UpdateRow(Skill skill)
         {
             if (skill != null)
             {
                 _context.Skills.Update(skill);
+                _context.SaveChanges();
+            }
+        }
+
+        public void DeleteRow(Skill skill)
+        {
+            if (skill != null)
+            {
+                _context.Skills.Remove(skill);
                 _context.SaveChanges();
             }
         }
