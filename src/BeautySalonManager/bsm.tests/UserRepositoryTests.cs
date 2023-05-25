@@ -97,23 +97,9 @@ namespace wm.tests.Repositories
         }
 
         [Test]
-        public void Test_InsertRow()
+        public void Test_AddRow()
         {
             _context.ChangeTracker.Clear();
-
-            User newUser = new User
-            {
-                Username = "test3",
-                Password = "01F4D2ACFF5BBEC1FD02066ED306989D7BF086D1D2701EF4AFB3A615264A3611",
-                Salt = "E45CB102EFA7A799F06325615255DACB",
-                FirstName = "test",
-                LastName = "test",
-                Phone = "1234567890",
-                Email = "test3@pass.me"
-            };
-
-            UserRepository userRepository = new(_context);
-            userRepository.AddRow(newUser);
 
             List<User> expected = new(){
                 new User
@@ -151,6 +137,19 @@ namespace wm.tests.Repositories
                 }
             };
 
+            User newUser = new User
+            {
+                Username = "test3",
+                Password = "01F4D2ACFF5BBEC1FD02066ED306989D7BF086D1D2701EF4AFB3A615264A3611",
+                Salt = "E45CB102EFA7A799F06325615255DACB",
+                FirstName = "test",
+                LastName = "test",
+                Phone = "1234567890",
+                Email = "test3@pass.me"
+            };
+
+            UserRepository userRepository = new(_context);
+            userRepository.AddRow(newUser);
             List<User> actual = userRepository.GetAll().ToList();
 
             Utilities.AreEqualByJson(actual, expected);
