@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bsm.dal", "bsm.dal\bsm.dal.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bsm.bll", "bsm.bll\bsm.bll.csproj", "{D3683CC7-CFD0-4E20-BAE6-94F6CE7A9BCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bsm.util", "bsm.util\bsm.util.csproj", "{75970913-653F-4A12-BFDE-202FDA023F3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bsm.util", "bsm.util\bsm.util.csproj", "{75970913-653F-4A12-BFDE-202FDA023F3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bsm.tests", "bsm.tests\bsm.tests.csproj", "{FBB235EC-CC14-4C15-B930-D4D9D2D07EEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{75970913-653F-4A12-BFDE-202FDA023F3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75970913-653F-4A12-BFDE-202FDA023F3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75970913-653F-4A12-BFDE-202FDA023F3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBB235EC-CC14-4C15-B930-D4D9D2D07EEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBB235EC-CC14-4C15-B930-D4D9D2D07EEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBB235EC-CC14-4C15-B930-D4D9D2D07EEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBB235EC-CC14-4C15-B930-D4D9D2D07EEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
