@@ -37,8 +37,7 @@ namespace bsm.console
                 Console.WriteLine();
             }
 
-            Console.WriteLine("Skill name: ");
-            string name = Console.ReadLine();
+            string name = InsertEmployeeSkill();
 
             UserSkillService.AddSkillToUser(UserLog.LoggedUser, name);
 
@@ -46,6 +45,30 @@ namespace bsm.console
             Console.WriteLine("Skill Added");
             Console.ReadKey();
             EmployeeSkillsMenu.Print();
+        }
+
+        private static string InsertEmployeeSkill()
+        {
+            Console.Write("Skill Name: ");
+            string skillName = Console.ReadLine();
+
+
+            if (skillName.IsNullOrEmpty())
+            {
+                Console.WriteLine("\nSkill Name is required");
+                Console.ReadKey();
+                Print();
+            }
+
+            Skill skill = SkillService.GetSkillByName(skillName);
+            if (skill == null)
+            {
+                Console.WriteLine("\nSkill doesn't exist");
+                Console.ReadKey();
+                Print();
+            }
+
+            return skillName;
         }
     }
 }

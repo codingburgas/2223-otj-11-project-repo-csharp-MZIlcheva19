@@ -14,9 +14,16 @@ namespace bsm.console
 
             List<Skill> skills = SkillService.GetAll();
 
-            foreach (Skill skill in skills)
+            if(skills == null)
             {
-                Console.WriteLine(skill.Name);
+                Console.WriteLine("No skills added");
+            }
+            else
+            {
+                foreach (Skill skill in skills)
+                {
+                    Console.WriteLine(skill.Name);
+                }
             }
 
             Console.WriteLine();

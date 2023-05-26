@@ -2,6 +2,7 @@
 using bsm.console.UserMenus;
 using bsm.dal.Models;
 using bsm.util;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,17 @@ namespace bsm.console
 
             List<Skill> skills = SkillService.GetUsersSkills(UserLog.LoggedUser.Id);
 
-            foreach (Skill skill in skills)
+            if (skills.IsNullOrEmpty())
             {
-                Console.WriteLine(skill.Name);
+                Console.WriteLine("You have no skills");
+            }
+            else
+            {
+                Console.WriteLine("Name");
+                foreach (Skill skill in skills)
+                {
+                    Console.WriteLine(skill.Name);
+                }
             }
 
             Console.WriteLine();
