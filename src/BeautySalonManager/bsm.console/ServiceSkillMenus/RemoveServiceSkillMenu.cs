@@ -34,8 +34,7 @@ namespace bsm.console
                 Console.WriteLine();
             }
 
-            Console.Write("Skill Name: ");
-            string skillName = Console.ReadLine();
+            string skillName = InsertServiceSkill(service);
 
             ServiceSkillService.RemoveServiceSkill(service.GroupId, service.Name, skillName);
 
@@ -43,6 +42,30 @@ namespace bsm.console
             Console.WriteLine("Service Skill Removed");
             Console.ReadKey();
             ServiceEditListMenu.Print();
+        }
+
+        private static string InsertServiceSkill(Service service)
+        {
+            Console.Write("Skill Name: ");
+            string skillName = Console.ReadLine();
+
+
+            if (skillName.IsNullOrEmpty())
+            {
+                Console.WriteLine("\nSkill Name is required");
+                Console.ReadKey();
+                Print(service);
+            }
+
+            Skill skill = SkillService.GetSkillByName(skillName);
+            if (skill == null)
+            {
+                Console.WriteLine("\nSkill doesn't exist");
+                Console.ReadKey();
+                Print(service);
+            }
+
+            return skillName;
         }
     }
 }

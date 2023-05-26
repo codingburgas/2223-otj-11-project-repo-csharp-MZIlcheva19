@@ -17,8 +17,7 @@ namespace bsm.console
             Console.WriteLine(ServiceGroupService.GetGroupNameById(groupId));
             Console.WriteLine();
 
-            Console.Write("Service Name: ");
-            string serviceName = Console.ReadLine();
+            string serviceName = InsertServiceName(groupId);
 
             Service service = ServiceService.GetServiceByName(serviceName, groupId);
             ServiceService.DeleteRow(service);
