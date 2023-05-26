@@ -8,7 +8,6 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
-
             Console.WriteLine("Register User");
             Console.WriteLine();
 

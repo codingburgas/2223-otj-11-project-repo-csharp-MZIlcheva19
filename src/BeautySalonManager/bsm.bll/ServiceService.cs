@@ -1,6 +1,7 @@
 ﻿using bsm.dal.Repositories;
 using bsm.dal.Models;
 using bsm.dal.Data;
+using Microsoft.IdentityModel.Tokens;
 
 namespace bsm.bll
 {
@@ -90,6 +91,45 @@ namespace bsm.bll
                     serviceRepository.DeleteRow(service);
                 }
             }
+        }
+
+        public static int CheckName(string name)
+        {
+            if (name.IsNullOrEmpty())
+            {
+                return 0;
+            }
+            if (name.Any(c => Char.IsDigit(c)))
+            {
+                return 1;
+            }
+            return -1;
+        }
+        
+        public static int CheckPrice(string price)
+        {
+            if (price.IsNullOrEmpty())
+            {
+                return 0;
+            }
+            if (price.Any(c => Char.IsLetter(c)))
+            {
+                return 1;
+            }
+            return -1;
+        }
+        
+        public static int CheckTime(string time)
+        {
+            if (time.IsNullOrEmpty())
+            {
+                return 0;
+            }
+            if (time.Any(c => Char.IsLetter(c)))
+            {
+                return 1;
+            }
+            return -1;
         }
     }
 }

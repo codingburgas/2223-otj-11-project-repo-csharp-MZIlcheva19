@@ -10,14 +10,14 @@ namespace bsm.console
             Console.Clear();
             UserService.AddAdmin();
 
-            Console.Write("[S] Services  [O] Options  ");
+            Console.Write("[O] Open Services  [S] Settings  ");
             if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Employee)
             {
                 Console.Write("[K] Skills  [A] Appointments  ");
             }
             if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Admin)
             {
-                Console.Write("[P] Panel  [A] Appointments  ");
+                Console.Write("[P] Admin Panel  [A] Appointments  ");
             }
             Console.WriteLine("[E] Exit");
 
@@ -27,8 +27,8 @@ namespace bsm.console
 
                 switch (input)
                 {
-                    case 'S': ServiceGroupListMenu.Print(); break;
-                    case 'O': OptionsMenu.Print(); break;
+                    case 'O': ServiceGroupListMenu.Print(); break;
+                    case 'S': OptionsMenu.Print(); break;
                     case 'K': if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Employee) EmployeeSkillsMenu.Print(); break;
                     case 'A': if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Admin || UserLog.LoggedUser.TypeId == (int)TypeCodes.Employee) AppointmetListMenu.Print(); break;
                     case 'P': if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Admin) AdminMenu.Print(); break;

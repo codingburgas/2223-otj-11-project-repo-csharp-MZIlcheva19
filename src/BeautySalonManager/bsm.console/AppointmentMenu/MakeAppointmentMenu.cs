@@ -40,7 +40,7 @@ namespace bsm.console
 
         private static string InsertServiceName(int groupId)
         {
-            Console.Write($"Service Name: ");
+            Console.Write("Service Name: ");
             var serviceName = Console.ReadLine();
 
             if (serviceName.ToUpper() == "B")
@@ -49,7 +49,7 @@ namespace bsm.console
             }
             if (serviceName.IsNullOrEmpty())
             {
-                Console.WriteLine($"\n{"Name is required",28}");
+                Console.WriteLine("\nName is required");
                 Console.ReadKey();
                 Print(groupId);
             }
@@ -57,7 +57,7 @@ namespace bsm.console
             Service service = ServiceService.GetServiceByName(serviceName, groupId);
             if (service == null)
             {
-                Console.WriteLine($"\nService doesn't exist");
+                Console.WriteLine("\nService doesn't exist");
                 Console.ReadKey();
                 Print(groupId);
             }
@@ -68,7 +68,7 @@ namespace bsm.console
         private static DateTime InsertAppointmentDate(int userId, int groupId)
         {
             Console.WriteLine("dd.MM.yyyy:HH.mm");
-            Console.Write($"Date and time: ");
+            Console.Write("Date and time: ");
             var appointmentDate = Console.ReadLine();
 
             if (appointmentDate.ToUpper() == "B")
@@ -77,7 +77,7 @@ namespace bsm.console
             }
             if (appointmentDate.IsNullOrEmpty())
             {
-                Console.WriteLine($"\nDate is required");
+                Console.WriteLine("\nDate is required");
                 Console.ReadKey();
                 Print(groupId);
             }
@@ -85,13 +85,13 @@ namespace bsm.console
             DateTime parsedDate;
             if (!DateTime.TryParseExact(appointmentDate, "dd.MM.yyyy:HH.mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
             {
-                Console.WriteLine($"\nDate is invalid");
+                Console.WriteLine("\nDate is invalid");
                 Console.ReadKey();
                 Print(groupId);
             }
             if (parsedDate < DateTime.Now)
             {
-                Console.WriteLine($"\nDate has already passed");
+                Console.WriteLine("\nDate has already passed");
                 Console.ReadKey();
                 Print(groupId);
             }

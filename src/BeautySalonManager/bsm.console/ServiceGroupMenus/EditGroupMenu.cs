@@ -28,18 +28,18 @@ namespace bsm.console
 
         private static string InsertOldGroupName()
         {
-            Console.Write($"Group Old Name: ");
+            Console.Write("Group Old Name: ");
             string? groupName = Console.ReadLine();
 
             switch (ServiceGroupService.CheckName(groupName))
             {
                 case 0:
-                    Console.WriteLine($"\nGroup Name is required");
+                    Console.WriteLine("\nGroup Name is required");
                     Console.ReadKey();
                     Print();
                     break;
                 case 1:
-                    Console.WriteLine($"\nGroup Name must not have numbers");
+                    Console.WriteLine("\nGroup Name must not have numbers");
                     Console.ReadKey();
                     Print();
                     break;
@@ -49,7 +49,7 @@ namespace bsm.console
             ServiceGroup serviceGroup = ServiceGroupService.GetGroupByName(groupName);
             if (serviceGroup == null)
             {
-                Console.WriteLine($"\nGroup doesn't exist");
+                Console.WriteLine("\nGroup doesn't exist");
                 Console.ReadKey();
                 Print();
             }
@@ -58,18 +58,18 @@ namespace bsm.console
         }
         private static string InsertNewGroupName()
         {
-            Console.Write($"Group Name: ");
+            Console.Write("Group Name: ");
             string? groupName = Console.ReadLine();
 
             switch (ServiceGroupService.CheckName(groupName))
             {
                 case 0:
-                    Console.WriteLine($"\nGroup Name is required");
+                    Console.WriteLine("\nGroup Name is required");
                     Console.ReadKey();
                     Print();
                     break;
                 case 1:
-                    Console.WriteLine($"\nGroup Name must not have numbers");
+                    Console.WriteLine("\nGroup Name must not have numbers");
                     Console.ReadKey();
                     Print();
                     break;
@@ -79,7 +79,7 @@ namespace bsm.console
             ServiceGroup serviceGroup = ServiceGroupService.GetGroupByName(groupName);
             if (serviceGroup != null)
             {
-                Console.WriteLine($"\nGroup already exists");
+                Console.WriteLine("\nGroup already exists");
                 Console.ReadKey();
                 Print();
             }

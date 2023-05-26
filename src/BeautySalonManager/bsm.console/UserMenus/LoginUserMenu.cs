@@ -8,7 +8,7 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("Login User");
+            Console.WriteLine($"{"Login User", 20}");
             Console.WriteLine();
 
             Console.Write("Username: ");

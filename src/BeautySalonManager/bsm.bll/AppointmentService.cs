@@ -40,7 +40,7 @@ namespace bsm.bll
                 {
                     List<Skill> employeeSkills = SkillService.GetUsersSkills(employee.Id);
 
-                    List<bool> skillsFlags = new List<bool>();
+                    List<bool> skillsMatches = new List<bool>();
                     for (int i = 0; i < serviceSkills.Count; i++)
                     {
                         bool flag = false;
@@ -52,10 +52,10 @@ namespace bsm.bll
                                 break;
                             }
                         }
-                        skillsFlags.Add(flag);
+                        skillsMatches.Add(flag);
                     }
 
-                    if (skillsFlags.Where(c => c).Count() == serviceSkills.Count)
+                    if (skillsMatches.Where(c => c).Count() == serviceSkills.Count)
                     {
                         checkEmployees = true;
                         appointment.EmployeeId = employee.Id;

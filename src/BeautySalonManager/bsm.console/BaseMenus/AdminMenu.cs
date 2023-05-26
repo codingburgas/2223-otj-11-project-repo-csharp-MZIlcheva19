@@ -7,7 +7,7 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("[S] Services  [K] Skills  [U] Users  [B] Back");
+            Console.WriteLine("[S] Edit Services  [K] Edit Skills  [U] Edit Users  [B] Back");
 
             while (true)
             {

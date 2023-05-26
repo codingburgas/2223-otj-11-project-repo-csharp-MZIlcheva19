@@ -25,7 +25,8 @@ namespace bsm.console
             }
             else
             {
-                Console.WriteLine("Date : Group : Service : Customer : Employee");
+                Console.WriteLine("Date : Time : Group : Service : Customer : Employee");
+                Console.WriteLine();
                 foreach (Appointment appointment in appointments)
                 {
                     Service service = ServiceService.GetServiceById(appointment.ServiceId);
@@ -38,6 +39,7 @@ namespace bsm.console
             }
 
             Console.WriteLine();
+            Console.WriteLine("Press any key to go back");
             Console.ReadKey();
             MainMenu.Print();
         }

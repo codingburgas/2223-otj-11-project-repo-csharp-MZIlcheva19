@@ -9,7 +9,12 @@ namespace bsm.console
             Console.Clear();
             UserService.AddAdmin();
 
-            Console.WriteLine("[R] Register  [L] Login  [E] Exit");
+            Console.WriteLine($"{"Beauty Salon Management System", 39}");
+            Console.WriteLine();
+
+            Console.WriteLine($"{"[R] Register", 30}");
+            Console.WriteLine($"{"[L] Login", 27}");
+            Console.WriteLine($"{"[E] Exit", 26}");
 
             while (true)
             {

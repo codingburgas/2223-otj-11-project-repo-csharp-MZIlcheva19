@@ -22,7 +22,10 @@ namespace bsm.console
 
             if(!skills.IsNullOrEmpty())
             {
-                foreach (Skill skill in skills)
+                List<Skill> userSkill = SkillService.GetUsersSkills(UserLog.LoggedUser.Id);
+                List<Skill> resultSkills = skills.Where(s => !userSkill.Any(us => us.Id == s.Id)).ToList();
+
+                foreach (Skill skill in resultSkills)
                 {
                     Console.WriteLine(skill.Name);
                 }

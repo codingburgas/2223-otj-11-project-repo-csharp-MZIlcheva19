@@ -34,8 +34,6 @@ namespace bsm.console
                 Console.WriteLine();
             }
 
-            Console.Write("Service Old Name: ");
-
             Console.Write("Skill Name: ");
             string skillName = Console.ReadLine();
 
