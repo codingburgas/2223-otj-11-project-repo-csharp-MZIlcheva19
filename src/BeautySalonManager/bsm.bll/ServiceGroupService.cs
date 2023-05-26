@@ -1,6 +1,7 @@
 ﻿using bsm.dal.Repositories;
 using bsm.dal.Models;
 using bsm.dal.Data;
+using Microsoft.IdentityModel.Tokens;
 
 namespace bsm.bll
 {
@@ -100,6 +101,19 @@ namespace bsm.bll
                     serviceGroupRepository.DeleteRow(serviceGroup);
                 }
             }
+        }
+
+        public static int CheckName(string name)
+        {
+            if (name.IsNullOrEmpty())
+            {
+                return 0;
+            }
+            if (name.Any(c => Char.IsDigit(c)))
+            {
+                return 1;
+            }
+            return -1;
         }
     }
 }

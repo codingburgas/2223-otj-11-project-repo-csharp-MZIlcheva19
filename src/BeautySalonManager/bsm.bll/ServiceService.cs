@@ -28,9 +28,11 @@ namespace bsm.bll
             return GetAll().Where(s => s.GroupId == groupId).ToList();
         }
 
-        public static Service GetServiceByName(string name, int groupId)
+        public static Service? GetServiceByName(string name, int groupId)
         {
-            return GetAll().FirstOrDefault(s => s.Name.ToUpper() == name.ToUpper() && s.GroupId == groupId);
+            Service? service = GetAll().FirstOrDefault(s => s.Name.ToUpper() == name.ToUpper() && s.GroupId == groupId);
+
+            return service != null ? service : null;
         }
 
         public static void AddRow(string name, decimal price, TimeSpan time, int groupId)
