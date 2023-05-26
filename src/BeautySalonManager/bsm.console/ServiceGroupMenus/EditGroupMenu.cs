@@ -38,11 +38,6 @@ namespace bsm.console
                     Console.ReadKey();
                     Print();
                     break;
-                case 1:
-                    Console.WriteLine("\nGroup Name must not have numbers");
-                    Console.ReadKey();
-                    Print();
-                    break;
                 default: break;
             }
 
@@ -56,6 +51,7 @@ namespace bsm.console
 
             return groupName;
         }
+
         private static string InsertNewGroupName()
         {
             Console.Write("Group Name: ");

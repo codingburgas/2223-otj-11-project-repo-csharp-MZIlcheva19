@@ -1,4 +1,5 @@
 ﻿using bsm.bll;
+using bsm.dal.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,10 +31,10 @@ namespace bsm.console
 
         private static string InsertServiceName(int groupId)
         {
-            Console.Write("Group Name: ");
-            string? groupName = Console.ReadLine();
+            Console.Write("Service Name: ");
+            string? serviceName = Console.ReadLine();
 
-            switch (ServiceService.CheckName(groupName))
+            switch (ServiceService.CheckName(serviceName))
             {
                 case 0:
                     Console.WriteLine("\nService Name is required");
@@ -47,7 +48,16 @@ namespace bsm.console
                     break;
                 default: break;
             }
-            return groupName;
+
+            Service? service = ServiceService.GetServiceByName(serviceName, groupId);
+            if(service != null)
+            {
+                Console.WriteLine("\nService Name is taken");
+                Console.ReadKey();
+                Print(groupId);
+            }
+
+            return serviceName;
         }
 
         private static decimal InsertServicePrice(int groupId)

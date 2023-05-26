@@ -27,5 +27,30 @@ namespace bsm.console
             Console.WriteLine("Service Deleted");
             ServiceEditListMenu.Print();
         }
+
+        private static string InsertServiceName(int groupId)
+        {
+            Console.Write("Service Name: ");
+            string? serviceName = Console.ReadLine();
+
+            switch (ServiceService.CheckName(serviceName))
+            {
+                case 0:
+                    Console.WriteLine("\nService Name is required");
+                    Console.ReadKey();
+                    Print(groupId);
+                    break;
+                default: break;
+            }
+
+            Service? service = ServiceService.GetServiceByName(serviceName, groupId);
+            if (service == null)
+            {
+                Console.WriteLine("\nService doesn't exist");
+                Console.ReadKey();
+                Print(groupId);
+            }
+            return serviceName;
+        }
     }
 }

@@ -16,8 +16,7 @@ namespace bsm.console
             Console.WriteLine("Services");
             Console.WriteLine();
 
-            Console.Write("Group Name: ");
-            string group = Console.ReadLine();
+            string group = InsertGroupName();
 
             int groupId = ServiceGroupService.GetGroupIdByName(group);
 
@@ -42,6 +41,32 @@ namespace bsm.console
                     default: ServiceGroupListMenu.Print(); break;
                 }
             }
+        }
+
+        private static string InsertGroupName()
+        {
+            Console.Write("Group Name: ");
+            string? groupName = Console.ReadLine();
+
+            switch (ServiceGroupService.CheckName(groupName))
+            {
+                case 0:
+                    Console.WriteLine("\nGroup Name is required");
+                    Console.ReadKey();
+                    Print();
+                    break;
+                default: break;
+            }
+
+            ServiceGroup serviceGroup = ServiceGroupService.GetGroupByName(groupName);
+            if (serviceGroup == null)
+            {
+                Console.WriteLine("\nGroup doesn't exist");
+                Console.ReadKey();
+                Print();
+            }
+
+            return groupName;
         }
     }
 }
