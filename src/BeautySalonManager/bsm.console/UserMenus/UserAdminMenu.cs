@@ -14,7 +14,6 @@ namespace bsm.console.UserMenus
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine();
             Console.WriteLine("[A] Approve User  [R] Remove Employee  [B] Back");
             while (true)
             {

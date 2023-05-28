@@ -9,6 +9,7 @@ namespace bsm.bll
 {
     public class UserService
     {
+        // Retrieves all employees
         public static List<User> GetEmployees()
         {
             using (var context = new BeautySalonContext())
@@ -21,6 +22,7 @@ namespace bsm.bll
             }
         }
 
+        // Retrieves a user by their ID
         public static User GetUserById(int userId)
         {
             using (var context = new BeautySalonContext())
@@ -31,6 +33,7 @@ namespace bsm.bll
             }
         }
 
+        // Retrieves users requesting approval
         public static List<User> GetApprovalRequestingUsers()
         {
             using (var context = new BeautySalonContext())
@@ -43,6 +46,7 @@ namespace bsm.bll
             }
         }
 
+        // Retrieves a user by their username
         public static User? GetUserByUsername(string username)
         {
             using (var context = new BeautySalonContext())
@@ -55,6 +59,7 @@ namespace bsm.bll
             }
         }
 
+        // Validates user login credentials
         public static bool LoginUser(string username, string password)
         {
             using (var context = new BeautySalonContext())
@@ -80,6 +85,7 @@ namespace bsm.bll
             }
         }
 
+        // Registers a new user
         public static void RegisterUser(string username, string password, string fName, string lName, string phone, string email)
         {
             using (var context = new BeautySalonContext())
@@ -100,13 +106,14 @@ namespace bsm.bll
                 user.TypeId = (int)TypeCodes.Client;
                 user.EmployeeRequest = false;
 
-                if(user != null)
+                if (user != null)
                 {
                     userRepository.AddRow(user);
                 }
             }
         }
 
+        // Edits a user's details
         public static void EditUser(User user, string username, string password, string fName, string lName, string phone, string email)
         {
             using (var context = new BeautySalonContext())
@@ -125,26 +132,28 @@ namespace bsm.bll
             }
         }
 
+        // Deletes a user
         public static void DeleteUser(User user)
         {
             using (var context = new BeautySalonContext())
             {
                 UserRepository userRepository = new(context);
 
-                AppointmentService.DeleteUserAppointments(user);    
+                AppointmentService.DeleteUserAppointments(user);
                 UserSkillService.DeleteAllUsersSkills(user);
 
                 userRepository.DeleteRow(user);
             }
         }
 
+        // Toggles the approval status of a user
         public static void ChangeRequestApproval(User user)
         {
             using (var context = new BeautySalonContext())
             {
                 UserRepository userRepository = new(context);
 
-                if(user.EmployeeRequest != null)
+                if (user.EmployeeRequest != null)
                 {
                     user.EmployeeRequest = !user.EmployeeRequest;
                 }
@@ -156,7 +165,8 @@ namespace bsm.bll
                 userRepository.UpdateRow(user);
             }
         }
-        
+
+        // Sets a user as an employee
         public static void MakeEmployee(User user)
         {
             using (var context = new BeautySalonContext())
@@ -170,6 +180,7 @@ namespace bsm.bll
             }
         }
 
+        // Sets a user as a client
         public static void MakeClient(User user)
         {
             using (var context = new BeautySalonContext())
@@ -184,6 +195,7 @@ namespace bsm.bll
             }
         }
 
+        // Adds an admin user
         public static void AddAdmin()
         {
             using (var context = new BeautySalonContext())
@@ -215,6 +227,7 @@ namespace bsm.bll
             }
         }
 
+        // Generates a random salt
         public static string GenerateSalt()
         {
             Random rnd = new Random();
@@ -227,6 +240,7 @@ namespace bsm.bll
             return salt;
         }
 
+        // Hashes a password using SHA256
         public static string HashPassword(string password)
         {
             SHA256 hash = SHA256.Create();

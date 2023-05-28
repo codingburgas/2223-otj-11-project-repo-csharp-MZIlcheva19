@@ -21,11 +21,11 @@ namespace bsm.console
 
             if (serviceGroups.IsNullOrEmpty())
             {
-                Console.WriteLine("No groups added");
+                Console.WriteLine("No groups added");  // Display a message if no groups have been added
             }
             foreach (ServiceGroup serviceGroup in serviceGroups)
             {
-                Console.WriteLine($"{serviceGroup.Name}");
+                Console.WriteLine($"{serviceGroup.Name}");  // Display the names of the existing service groups
             }
 
             Console.WriteLine();
@@ -37,9 +37,9 @@ namespace bsm.console
 
                 switch (input)
                 {
-                    case 'O': ServiceListMenu.Print(); break;
-                    case 'B': MainMenu.Print(); break;
-                    default: MainMenu.Print(); break;
+                    case 'O': ServiceListMenu.Print(); break;  // Call the ServiceListMenu.Print() method to open the selected group
+                    case 'B': MainMenu.Print(); break;  // Go back to the main menu
+                    default: MainMenu.Print(); break;  // Go back to the main menu if an invalid input is provided
                 }
             }
         }

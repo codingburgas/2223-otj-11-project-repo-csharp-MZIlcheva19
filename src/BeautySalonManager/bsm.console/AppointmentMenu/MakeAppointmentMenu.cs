@@ -1,5 +1,5 @@
 ﻿using bsm.bll;
-using bsm.dal.Models;
+using bsm.dal.Models; 
 using bsm.util;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -13,6 +13,7 @@ namespace bsm.console
 {
     internal class MakeAppointmentMenu
     {
+        // Method to print the Make Appointment menu for a specific service group
         public static void Print(int groupId)
         {
             Console.Clear();
@@ -22,10 +23,14 @@ namespace bsm.console
 
             int loggedUserId = UserLog.LoggedUser.Id;
 
+            // Prompting the user to insert the service name
             string service = InsertServiceName(groupId);
+
+            // Prompting the user to insert the appointment date
             DateTime date = InsertAppointmentDate(loggedUserId, groupId);
-            
-            if(AppointmentService.CreateAppointment(date, groupId, service, loggedUserId))
+
+            // Creating the appointment
+            if (AppointmentService.CreateAppointment(date, groupId, service, loggedUserId))
             {
                 Console.WriteLine("\nAppointment Created");
             }
@@ -38,6 +43,7 @@ namespace bsm.console
             ServiceListMenu.Print();
         }
 
+        // Method to insert the service name for the appointment
         private static string InsertServiceName(int groupId)
         {
             Console.Write("Service Name: ");
@@ -54,6 +60,7 @@ namespace bsm.console
                 Print(groupId);
             }
 
+            // Retrieving the service by name and group ID
             Service service = ServiceService.GetServiceByName(serviceName, groupId);
             if (service == null)
             {
@@ -65,6 +72,7 @@ namespace bsm.console
             return serviceName;
         }
 
+        // Method to insert the appointment date and time
         private static DateTime InsertAppointmentDate(int userId, int groupId)
         {
             Console.WriteLine("dd.MM.yyyy:HH.mm");
