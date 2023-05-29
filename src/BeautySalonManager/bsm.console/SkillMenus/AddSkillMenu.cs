@@ -42,10 +42,10 @@ namespace bsm.console
             }
 
             Skill skill = SkillService.GetSkillByName(skillName);
-            if (skill == null)
+            if (skill != null)
             {
                 Console.WriteLine();
-                Write.LineToCenter("Skill doesn't exist");
+                Write.LineToCenter("Skill already exists");
                 Console.ReadKey();
                 Print();
             }
