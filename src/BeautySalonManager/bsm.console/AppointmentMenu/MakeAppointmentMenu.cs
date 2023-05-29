@@ -37,7 +37,7 @@ namespace bsm.console
             }
 
             Console.ReadKey();
-            ServiceListMenu.Print();
+            MainMenu.Print();
         }
 
         private static string InsertServiceName(int groupId)

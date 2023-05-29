@@ -14,7 +14,7 @@ namespace bsm.console
             Console.WriteLine();
             Write.LineToCenter("[O] Open Services ");
             Write.LineToCenter("[S] Settings     ");
-
+            
             if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Employee)
             {
                 Write.LineToCenter("[K] Skills       ");

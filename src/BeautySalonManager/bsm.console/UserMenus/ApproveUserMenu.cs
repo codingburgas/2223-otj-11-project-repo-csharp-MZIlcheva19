@@ -66,7 +66,7 @@ namespace bsm.console
 
             List<User> usersList = UserService.GetApprovalRequestingUsers();
             User user = UserService.GetUserByUsername(username);
-            if (!usersList.Exists(u => u == user))
+            if (usersList.Exists(u => u == user))
             {
                 Console.WriteLine();
                 Write.LineToCenter("User doesn't exist");
