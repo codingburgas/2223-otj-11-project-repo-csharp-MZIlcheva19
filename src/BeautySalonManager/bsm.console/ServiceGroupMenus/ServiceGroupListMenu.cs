@@ -1,5 +1,6 @@
 ﻿using bsm.bll;
 using bsm.dal.Models;
+using bsm.util;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -14,22 +15,23 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("Service Groups");
+            Write.LineToCenter("Service Groups");
             Console.WriteLine();
 
             List<ServiceGroup> serviceGroups = ServiceGroupService.GetAll();
 
             if (serviceGroups.IsNullOrEmpty())
             {
-                Console.WriteLine("No groups added");  // Display a message if no groups have been added
+                Write.LineToCenter("No groups added");
             }
             foreach (ServiceGroup serviceGroup in serviceGroups)
             {
-                Console.WriteLine($"{serviceGroup.Name}");  // Display the names of the existing service groups
+                Write.LineToCenter($"{serviceGroup.Name}");
             }
 
             Console.WriteLine();
-            Console.WriteLine("[O] Open Group  [B] Back");
+            Write.LineToCenter("[O] Open Group");
+            Write.LineToCenter("[B] Back      ");
 
             while (true)
             {
@@ -37,9 +39,9 @@ namespace bsm.console
 
                 switch (input)
                 {
-                    case 'O': ServiceListMenu.Print(); break;  // Call the ServiceListMenu.Print() method to open the selected group
-                    case 'B': MainMenu.Print(); break;  // Go back to the main menu
-                    default: MainMenu.Print(); break;  // Go back to the main menu if an invalid input is provided
+                    case 'O': ServiceListMenu.Print(); break;
+                    case 'B': MainMenu.Print(); break;
+                    default: MainMenu.Print(); break;
                 }
             }
         }

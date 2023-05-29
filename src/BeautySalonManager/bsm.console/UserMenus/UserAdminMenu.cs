@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bsm.console.UserMenus
+namespace bsm.console
 {
     internal class UserAdminMenu
     {
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("[A] Approve User  [R] Remove Employee  [B] Back");
+            Console.WriteLine();
+            Write.LineToCenter("[A] Approve User   ");
+            Write.LineToCenter("[R] Remove Employee");
+            Write.LineToCenter("[B] Back           ");
             while (true)
             {
                 var input = char.ToUpper(Console.ReadKey().KeyChar);

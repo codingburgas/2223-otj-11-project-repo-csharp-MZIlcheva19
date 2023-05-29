@@ -1,5 +1,6 @@
 ﻿using bsm.bll;
 using bsm.dal.Models;
+using bsm.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,8 @@ namespace bsm.console
         public static void Print(int groupId)
         {
             Console.Clear();
-            Console.WriteLine("Delete Service");
-            Console.WriteLine(ServiceGroupService.GetGroupNameById(groupId));
+            Write.LineToCenter("Delete Service");
+            Write.LineToCenter($"Group: {ServiceGroupService.GetGroupNameById(groupId)}");
             Console.WriteLine();
 
             string serviceName = InsertServiceName(groupId);
@@ -23,19 +24,20 @@ namespace bsm.console
             ServiceService.DeleteRow(service);
 
             Console.WriteLine();
-            Console.WriteLine("Service Deleted");
+            Write.LineToCenter("Service Deleted");
             ServiceEditListMenu.Print();
         }
 
         private static string InsertServiceName(int groupId)
         {
-            Console.Write("Service Name: ");
+            Write.ToCenter("Service Name: ");
             string? serviceName = Console.ReadLine();
 
             switch (ServiceService.CheckName(serviceName))
             {
                 case 0:
-                    Console.WriteLine("\nService Name is required");
+                    Console.WriteLine();
+                    Write.LineToCenter("Service Name is required");
                     Console.ReadKey();
                     Print(groupId);
                     break;
@@ -45,7 +47,8 @@ namespace bsm.console
             Service? service = ServiceService.GetServiceByName(serviceName, groupId);
             if (service == null)
             {
-                Console.WriteLine("\nService doesn't exist");
+                Console.WriteLine();
+                Write.LineToCenter("Service doesn't exist");
                 Console.ReadKey();
                 Print(groupId);
             }

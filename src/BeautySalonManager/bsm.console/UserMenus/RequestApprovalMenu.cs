@@ -15,11 +15,15 @@ namespace bsm.console
             Console.Clear();
             if(UserLog.LoggedUser.EmployeeRequest == false)
             {
-                Console.WriteLine("Are you sure you want to become an employee?  [Y] Yes  [N] No");
+                Write.LineToCenter("Are you sure you want to become an employee?");
+                Write.LineToCenter("[Y] Yes");
+                Write.LineToCenter("[N] No ");
             }
             else
             {
-                Console.WriteLine("Are you sure you want to remove your employee request?  [Y] Yes  [N] No");
+                Write.LineToCenter("Are you sure you want to remove your employee request?");
+                Write.LineToCenter("[Y] Yes");
+                Write.LineToCenter("[N] No ");
             }
 
             while (true)
@@ -28,8 +32,8 @@ namespace bsm.console
 
                 switch (input)
                 {
-                    case 'Y': UserService.ChangeRequestApproval(UserLog.LoggedUser); OptionsMenu.Print(); break;
-                    case 'N': OptionsMenu.Print(); break;
+                    case 'Y': UserService.ChangeRequestApproval(UserLog.LoggedUser); SettingsMenu.Print(); break;
+                    case 'N': SettingsMenu.Print(); break;
                     default: break;
                 }
             }

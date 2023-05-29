@@ -1,5 +1,4 @@
 ﻿using bsm.bll;
-using bsm.console.UserMenus;
 using bsm.dal.Models;
 using bsm.util;
 using Microsoft.IdentityModel.Tokens;
@@ -17,26 +16,26 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("Your Skills");
+            Write.LineToCenter("Your Skills");
             Console.WriteLine();
 
             List<Skill> skills = SkillService.GetUsersSkills(UserLog.LoggedUser.Id);
 
             if (skills.IsNullOrEmpty())
             {
-                Console.WriteLine("You have no skills");
+                Write.LineToCenter("You have no skills");
             }
             else
             {
-                Console.WriteLine("Name");
+                Write.LineToCenter("Name");
                 foreach (Skill skill in skills)
                 {
-                    Console.WriteLine(skill.Name);
+                    Write.LineToCenter(skill.Name);
                 }
             }
 
             Console.WriteLine();
-            Console.WriteLine("[A] Add Skill  [R] Remove Skill  [B] Back");
+            Write.LineToCenter("[A] Add Skill  [R] Remove Skill  [B] Back");
 
             while (true)
             {

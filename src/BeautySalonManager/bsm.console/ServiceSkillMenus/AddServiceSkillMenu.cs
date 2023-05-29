@@ -1,5 +1,6 @@
 ﻿using bsm.bll;
 using bsm.dal.Models;
+using bsm.util;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -14,23 +15,23 @@ namespace bsm.console
         public static void Print(Service service)
         {
             Console.Clear();
-            Console.WriteLine("Add Skill to Service");
+            Write.LineToCenter("Add Skill to Service");
             Console.WriteLine(); 
             
             List<Skill> skills = SkillService.GetAll();
 
             if (!skills.IsNullOrEmpty())
             {
-                Console.WriteLine("Skill Name");
+                Write.LineToCenter("Skill Name");
                 foreach (Skill skill in skills)
                 {
-                    Console.WriteLine(skill.Name);
+                    Write.LineToCenter(skill.Name);
                 }
                 Console.WriteLine();
             }
             else
             {
-                Console.WriteLine("No Services");
+                Write.LineToCenter("No Services");
                 Console.WriteLine();
             }
 
@@ -39,20 +40,21 @@ namespace bsm.console
             ServiceSkillService.AddServiceSkill(service.GroupId, service.Name, skillName);
 
             Console.WriteLine();
-            Console.WriteLine("Service Skill Added");
+            Write.LineToCenter("Service Skill Added");
             Console.ReadKey();
             ServiceEditListMenu.Print();
         }
 
         private static string InsertServiceSkill(Service service)
         {
-            Console.Write("Skill Name: ");
+            Write.ToCenter("Skill Name: ");
             string skillName = Console.ReadLine();
 
 
             if(skillName.IsNullOrEmpty())
             {
-                Console.WriteLine("\nSkill Name is required");
+                Console.WriteLine();
+                Write.LineToCenter("Skill Name is required");
                 Console.ReadKey();
                 Print(service);
             }
@@ -60,7 +62,8 @@ namespace bsm.console
             Skill skill = SkillService.GetSkillByName(skillName);
             if(skill == null)
             {
-                Console.WriteLine("\nSkill doesn't exist");
+                Console.WriteLine();
+                Write.LineToCenter("Skill doesn't exist");
                 Console.ReadKey();
                 Print(service);
             }

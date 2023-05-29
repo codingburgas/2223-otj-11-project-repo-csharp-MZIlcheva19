@@ -1,5 +1,6 @@
 ﻿using bsm.bll;
 using bsm.dal.Models;
+using bsm.util;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("Delete Skill");
+            Write.LineToCenter("Delete Skill");
             Console.WriteLine();
 
             string name = InsertSkillName();
@@ -22,19 +23,20 @@ namespace bsm.console
             SkillService.DeleteSkill(name);
 
             Console.WriteLine();
-            Console.WriteLine("Skill Deleted");
+            Write.LineToCenter("Skill Deleted");
             SkillsEditMenu.Print();
         }
 
         private static string InsertSkillName()
         {
-            Console.Write("Skill Name: ");
+            Write.ToCenter("Skill Name: ");
             string skillName = Console.ReadLine();
 
 
             if (skillName.IsNullOrEmpty())
             {
-                Console.WriteLine("\nSkill Name is required");
+                Console.WriteLine();
+                Write.LineToCenter("Skill Name is required");
                 Console.ReadKey();
                 Print();
             }
@@ -42,7 +44,8 @@ namespace bsm.console
             Skill skill = SkillService.GetSkillByName(skillName);
             if (skill == null)
             {
-                Console.WriteLine("\nSkill doesn't exist");
+                Console.WriteLine();
+                Write.LineToCenter("Skill doesn't exist");
                 Console.ReadKey();
                 Print();
             }

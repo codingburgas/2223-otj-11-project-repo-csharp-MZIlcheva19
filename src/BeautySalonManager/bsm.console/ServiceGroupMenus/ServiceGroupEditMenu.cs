@@ -1,5 +1,6 @@
 ﻿using bsm.bll;
 using bsm.dal.Models;
+using bsm.util;
 using Microsoft.IdentityModel.Tokens;
 
 namespace bsm.console
@@ -9,22 +10,26 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("Service Groups");
+            Write.LineToCenter("Service Groups");
             Console.WriteLine();
 
             List<ServiceGroup> serviceGroups = ServiceGroupService.GetAll();
 
-            if (serviceGroups.IsNullOrEmpty())
+            if(serviceGroups.IsNullOrEmpty())
             {
-                Console.WriteLine("No groups added");  // Display a message if no groups have been added
+                Write.LineToCenter("No groups added");
             }
             foreach (ServiceGroup serviceGroup in serviceGroups)
             {
-                Console.WriteLine($"{serviceGroup.Name}");  // Display the names of the existing service groups
+                Write.LineToCenter($"{serviceGroup.Name}");
             }
 
             Console.WriteLine();
-            Console.WriteLine("[O] Open Group  [A] Add Group  [D] Delete Group  [E] Edit Group  [B] Back");
+            Write.LineToCenter("[O] Open Group  ");
+            Write.LineToCenter("[A] Add Group   ");
+            Write.LineToCenter("[D] Delete Group");
+            Write.LineToCenter("[E] Edit Group  ");
+            Write.LineToCenter("[B] Back        ");
 
             while (true)
             {
@@ -32,11 +37,11 @@ namespace bsm.console
 
                 switch (input)
                 {
-                    case 'O': ServiceEditListMenu.Print(); break;  // Call the ServiceEditListMenu.Print() method to open the selected group
-                    case 'A': AddGroupMenu.Print(); break;  // Call the AddGroupMenu.Print() method to add a new group
-                    case 'D': DeleteGroupMenu.Print(); break;  // Call the DeleteGroupMenu.Print() method to delete a group
-                    case 'E': EditGroupMenu.Print(); break;  // Call the EditGroupMenu.Print() method to edit a group
-                    case 'B': AdminMenu.Print(); break;  // Go back to the admin menu
+                    case 'O': ServiceEditListMenu.Print(); break;
+                    case 'A': AddGroupMenu.Print(); break;
+                    case 'D': DeleteGroupMenu.Print(); break;
+                    case 'E': EditGroupMenu.Print(); break;
+                    case 'B': AdminMenu.Print(); break;
                     default: break;
                 }
             }

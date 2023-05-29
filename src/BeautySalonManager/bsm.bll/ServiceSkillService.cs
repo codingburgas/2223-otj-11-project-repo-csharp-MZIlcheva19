@@ -7,8 +7,7 @@ namespace bsm.bll
 {
     public class ServiceSkillService
     {
-        // Retrieves all service skills
-        public static List<ServiceSkill> GetAll()
+        public static List<ServiceSkill> GetAll() 
         {
             using (var context = new BeautySalonContext())
             {
@@ -20,21 +19,18 @@ namespace bsm.bll
             }
         }
 
-        // Retrieves all service skills associated with a specific service ID
         public static List<ServiceSkill> GetAllByServiceId(int serviceId)
         {
             List<ServiceSkill> serviceSkills = GetAll().Where(s => s.ServiceId == serviceId).ToList();
             return serviceSkills;
         }
 
-        // Retrieves all service skills associated with a specific skill ID
         public static List<ServiceSkill> GetAllBySkillId(int skillId)
         {
             List<ServiceSkill> serviceSkills = GetAll().Where(s => s.SkillId == skillId).ToList();
             return serviceSkills;
         }
 
-        // Adds a new service skill relationship
         public static void AddServiceSkill(int groupId, string serviceName, string skillName)
         {
             using (var context = new BeautySalonContext())
@@ -54,7 +50,6 @@ namespace bsm.bll
             }
         }
 
-        // Removes a service skill relationship
         public static void RemoveServiceSkill(int groupId, string serviceName, string skillName)
         {
             using (var context = new BeautySalonContext())
@@ -70,7 +65,6 @@ namespace bsm.bll
             }
         }
 
-        // Deletes all service skill relationships associated with a service ID
         public static void DeleteAllByService(int serviceId)
         {
             using (var context = new BeautySalonContext())
@@ -86,7 +80,6 @@ namespace bsm.bll
             }
         }
 
-        // Deletes all service skill relationships associated with a skill ID
         public static void DeleteAllBySkill(int skillId)
         {
             using (var context = new BeautySalonContext())

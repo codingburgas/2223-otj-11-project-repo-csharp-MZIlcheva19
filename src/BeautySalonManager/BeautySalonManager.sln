@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bsm.bll", "bsm.bll\bsm.bll.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bsm.util", "bsm.util\bsm.util.csproj", "{75970913-653F-4A12-BFDE-202FDA023F3F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bsm.tests", "bsm.tests\bsm.tests.csproj", "{FBB235EC-CC14-4C15-B930-D4D9D2D07EEC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bsm.tests", "bsm.tests\bsm.tests.csproj", "{FBB235EC-CC14-4C15-B930-D4D9D2D07EEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

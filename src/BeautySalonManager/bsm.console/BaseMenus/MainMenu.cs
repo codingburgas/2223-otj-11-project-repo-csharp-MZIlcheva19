@@ -1,5 +1,6 @@
 ﻿using bsm.bll;
 using bsm.util;
+using System.Text;
 
 namespace bsm.console
 {
@@ -8,32 +9,37 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
-            UserService.AddAdmin();  // Add admin user if not already added
+            UserService.AddAdmin();
+            Write.LineToCenter("Main Menu");
+            Console.WriteLine();
+            Write.LineToCenter("[O] Open Services ");
+            Write.LineToCenter("[S] Settings     ");
 
-            Console.Write("[O] Open Services  [S] Settings  ");  // Display options for opening services and settings
-            if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Employee)  // Check if the logged-in user is an employee
+            if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Employee)
             {
-                Console.Write("[K] Skills  [A] Appointments  ");  // Display options for skills and appointments
+                Write.LineToCenter("[K] Skills       ");
+                Write.LineToCenter("[A] Appointments ");
             }
-            if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Admin)  // Check if the logged-in user is an admin
+            if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Admin)
             {
-                Console.Write("[P] Admin Panel  [A] Appointments  ");  // Display options for admin panel and appointments
+                Write.LineToCenter("[P] Admin Panel  ");
+                Write.LineToCenter("[A] Appointments ");
             }
-            Console.WriteLine("[E] Exit");  // Display option for exiting the program
+            Write.LineToCenter("[E] Exit         ");
 
             while (true)
             {
-                var input = char.ToUpper(Console.ReadKey().KeyChar);  // Read a key from the console and convert it to uppercase
+                var input = char.ToUpper(Console.ReadKey().KeyChar);
 
                 switch (input)
                 {
-                    case 'O': ServiceGroupListMenu.Print(); break;  // If the input is 'O', invoke the Print() method of ServiceGroupListMenu
-                    case 'S': OptionsMenu.Print(); break;  // If the input is 'S', invoke the Print() method of OptionsMenu
-                    case 'K': if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Employee) EmployeeSkillsMenu.Print(); break;  // If the input is 'K' and the user is an employee, invoke the Print() method of EmployeeSkillsMenu
-                    case 'A': if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Admin || UserLog.LoggedUser.TypeId == (int)TypeCodes.Employee) AppointmetListMenu.Print(); break;  // If the input is 'A' and the user is an admin or employee, invoke the Print() method of AppointmetListMenu
-                    case 'P': if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Admin) AdminMenu.Print(); break;  // If the input is 'P' and the user is an admin, invoke the Print() method of AdminMenu
-                    case 'E': Environment.Exit(0); break;  // If the input is 'E', exit the program
-                    default: break;  // If the input doesn't match any of the cases, do nothing and continue the loop
+                    case 'O': ServiceGroupListMenu.Print(); break;
+                    case 'S': SettingsMenu.Print(); break;
+                    case 'K': if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Employee) EmployeeSkillsMenu.Print(); break;
+                    case 'A': if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Admin || UserLog.LoggedUser.TypeId == (int)TypeCodes.Employee) AppointmetListMenu.Print(); break;
+                    case 'P': if (UserLog.LoggedUser.TypeId == (int)TypeCodes.Admin) AdminMenu.Print(); break;
+                    case 'E': Environment.Exit(0); break;
+                    default: break;
                 }
             }
         }

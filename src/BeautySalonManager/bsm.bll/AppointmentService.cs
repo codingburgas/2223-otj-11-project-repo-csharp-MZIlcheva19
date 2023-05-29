@@ -7,23 +7,21 @@ namespace bsm.bll
 {
     public class AppointmentService
     {
-        // Retrieves all appointments
         public static List<Appointment> GetAll()
         {
             using (var context = new BeautySalonContext())
             {
-                AppointmentRepository appointmentRepository = new AppointmentRepository(context);
+                AppointmentRepository appointmentRepository = new(context);
 
                 return appointmentRepository.GetAll().ToList();
             }
         }
 
-        // Creates a new appointment
         public static bool CreateAppointment(DateTime date, int groupId, string serviceName, int customerId)
         {
             using (var context = new BeautySalonContext())
             {
-                AppointmentRepository appointmentRepository = new AppointmentRepository(context);
+                AppointmentRepository appointmentRepository = new(context);
 
                 int serviceId = ServiceService.GetServiceByName(serviceName, groupId).Id;
 
@@ -46,9 +44,9 @@ namespace bsm.bll
                     for (int i = 0; i < serviceSkills.Count; i++)
                     {
                         bool flag = false;
-                        foreach (Skill skill in employeeSkills)
+                        foreach(Skill skill in employeeSkills)
                         {
-                            if (skill.Id == serviceSkills[i].Id)
+                            if(skill.Id == serviceSkills[i].Id)
                             {
                                 flag = true;
                                 break;
@@ -73,16 +71,33 @@ namespace bsm.bll
             }
         }
 
-        // Deletes all appointments for a specific user
+        public static void UpdateAppointments()
+        {
+            using (var context = new BeautySalonContext())
+            {
+                AppointmentRepository appointmentRepository = new(context);
+
+                List<Appointment> appointments = appointmentRepository.GetAll().ToList();
+
+                foreach (Appointment appointment in appointments)
+                {
+                    if (appointment.Date < DateTime.Now)
+                    {
+                        appointmentRepository.DeleteRow(appointment);
+                    }
+                }
+            }
+        }
+
         public static void DeleteUserAppointments(User user)
         {
             using (var context = new BeautySalonContext())
             {
-                AppointmentRepository appointmentRepository = new AppointmentRepository(context);
+                AppointmentRepository appointmentRepository = new(context);
 
                 List<Appointment> appointments = appointmentRepository.GetAllByUserId(user.Id).ToList();
 
-                foreach (Appointment appointment in appointments)
+                foreach(Appointment appointment in appointments)
                 {
                     appointmentRepository.DeleteRow(appointment);
                 }

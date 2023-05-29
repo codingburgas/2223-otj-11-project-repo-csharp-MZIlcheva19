@@ -1,5 +1,6 @@
 ﻿using bsm.bll;
 using bsm.dal.Models;
+using bsm.util;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("Edit Skill");
+            Write.LineToCenter("Edit Skill");
             Console.WriteLine();
 
             string oldName = InsertOldSkillName();
@@ -23,19 +24,20 @@ namespace bsm.console
             SkillService.EditRow(oldName, newName);
 
             Console.WriteLine();
-            Console.WriteLine("Skill Edited");
+            Write.LineToCenter("Skill Edited");
             SkillsEditMenu.Print();
         }
 
         private static string InsertOldSkillName()
         {
-            Console.Write("Skill Name: ");
+            Write.ToCenter("Skill Name: ");
             string skillName = Console.ReadLine();
 
 
             if (skillName.IsNullOrEmpty())
             {
-                Console.WriteLine("\nSkill Name is required");
+                Console.WriteLine();
+                Write.LineToCenter("Skill Name is required");
                 Console.ReadKey();
                 Print();
             }
@@ -43,7 +45,8 @@ namespace bsm.console
             Skill skill = SkillService.GetSkillByName(skillName);
             if (skill == null)
             {
-                Console.WriteLine("\nSkill doesn't exist");
+                Console.WriteLine();
+                Write.LineToCenter("Skill doesn't exist");
                 Console.ReadKey();
                 Print();
             }
@@ -53,13 +56,14 @@ namespace bsm.console
 
         private static string InsertNewSkillName()
         {
-            Console.Write("Skill Name: ");
+            Write.ToCenter("Skill Name: ");
             string skillName = Console.ReadLine();
 
 
             if (skillName.IsNullOrEmpty())
             {
-                Console.WriteLine("\nSkill Name is required");
+                Console.WriteLine();
+                Write.LineToCenter("Skill Name is required");
                 Console.ReadKey();
                 Print();
             }
@@ -67,7 +71,8 @@ namespace bsm.console
             Skill skill = SkillService.GetSkillByName(skillName);
             if (skill != null)
             {
-                Console.WriteLine("\nSkill already exist");
+                Console.WriteLine();
+                Write.LineToCenter("Skill already exist");
                 Console.ReadKey();
                 Print();
             }

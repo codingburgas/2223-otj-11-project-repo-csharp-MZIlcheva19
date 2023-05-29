@@ -1,5 +1,6 @@
 ﻿using bsm.bll;
 using bsm.dal.Models;
+using bsm.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("Services");
+            Write.LineToCenter("Services");
             Console.WriteLine();
 
             string group = InsertGroupName();
@@ -24,11 +25,12 @@ namespace bsm.console
 
             foreach (Service service in services)
             {
-                Console.WriteLine($"{service.Name} : {service.Price:F2}$ : {service.Time.Hours * 60 + service.Time.Minutes} min");
+                Write.LineToCenter($"{service.Name} : {service.Price:F2}$ : {service.Time.Hours * 60 + service.Time.Minutes} min");
             }
 
             Console.WriteLine();
-            Console.WriteLine("[A] Make Appointment  [B] Back");
+            Write.LineToCenter("[A] Make Appointment");
+            Write.LineToCenter("[B] Back            ");
 
             while (true)
             {
@@ -45,13 +47,14 @@ namespace bsm.console
 
         private static string InsertGroupName()
         {
-            Console.Write("Group Name: ");
+            Write.ToCenter("Group Name: ");
             string? groupName = Console.ReadLine();
 
             switch (ServiceGroupService.CheckName(groupName))
             {
                 case 0:
-                    Console.WriteLine("\nGroup Name is required");
+                    Console.WriteLine();
+                    Write.LineToCenter("Group Name is required");
                     Console.ReadKey();
                     Print();
                     break;
@@ -61,7 +64,8 @@ namespace bsm.console
             ServiceGroup serviceGroup = ServiceGroupService.GetGroupByName(groupName);
             if (serviceGroup == null)
             {
-                Console.WriteLine("\nGroup doesn't exist");
+                Console.WriteLine();
+                Write.LineToCenter("Group doesn't exist");
                 Console.ReadKey();
                 Print();
             }

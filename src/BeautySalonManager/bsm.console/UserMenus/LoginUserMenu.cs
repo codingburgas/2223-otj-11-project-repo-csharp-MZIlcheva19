@@ -1,5 +1,6 @@
 ﻿using bsm.bll;
 using bsm.util;
+using Microsoft.IdentityModel.Tokens;
 
 namespace bsm.console
 {
@@ -8,18 +9,16 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine($"{"Login User", 20}");
+            Write.LineToCenter("Login User");
             Console.WriteLine();
 
-            Console.Write("Username: ");
-            string username = Console.ReadLine();
-            Console.Write("Password: ");
-            string password = Console.ReadLine();
+            string username = InsertUsername();
+            string password = InsertPassword();
 
             if (!UserService.LoginUser(username, password))
             {
                 Console.WriteLine();
-                Console.WriteLine("Wrong Username or Password");
+                Write.LineToCenter("Wrong Username or Password");
                 Console.ReadKey();
                 Print();
             }
@@ -27,9 +26,43 @@ namespace bsm.console
             UserLog.LoggedUser = UserService.GetUserByUsername(username);
 
             Console.WriteLine();
-            Console.WriteLine("Logged In");
+            Write.LineToCenter("Logged In");
             Console.ReadKey();
             MainMenu.Print();
+        }
+        private static string InsertUsername()
+        {
+            Write.ToCenter("Username: ");
+            var username = Console.ReadLine();
+
+            if (username.ToUpper() == "B")
+            {
+                MainMenu.Print();
+            }
+            if (username.IsNullOrEmpty())
+            {
+                Console.WriteLine();
+                Write.LineToCenter("Username is required");
+                Console.ReadKey();
+                Print();
+            }
+
+            return username;
+        }
+
+        private static string InsertPassword()
+        {
+            Write.ToCenter("Password: ");
+            var password = Console.ReadLine();
+
+            if (password.IsNullOrEmpty())
+            {
+                Console.WriteLine();
+                Write.LineToCenter("Password is required");
+                Console.ReadKey();
+                Print();
+            }
+            return password;
         }
     }
 }

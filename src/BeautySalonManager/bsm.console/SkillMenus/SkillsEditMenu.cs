@@ -1,5 +1,6 @@
 ﻿using bsm.bll;
 using bsm.dal.Models;
+using bsm.util;
 using System.Text.RegularExpressions;
 
 namespace bsm.console
@@ -9,25 +10,28 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("Edit Skills");
+            Write.LineToCenter("Edit Skills");
             Console.WriteLine();
 
             List<Skill> skills = SkillService.GetAll();
 
             if(skills == null)
             {
-                Console.WriteLine("No skills added");
+                Write.LineToCenter("No skills added");
             }
             else
             {
                 foreach (Skill skill in skills)
                 {
-                    Console.WriteLine(skill.Name);
+                    Write.LineToCenter(skill.Name);
                 }
             }
 
             Console.WriteLine();
-            Console.WriteLine("[A] Add Skill  [E] Edit Skill  [D] Delete Skill  [B] Back");
+            Write.LineToCenter("[A] Add Skill   ");
+            Write.LineToCenter("[E] Edit Skill  ");
+            Write.LineToCenter("[D] Delete Skill");
+            Write.LineToCenter("[B] Back        ");
 
             while (true)
             {

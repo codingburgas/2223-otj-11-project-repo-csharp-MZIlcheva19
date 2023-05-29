@@ -1,5 +1,6 @@
 ﻿using bsm.bll;
 using bsm.dal.Models;
+using bsm.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,48 +14,51 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("Delete Group");
+            Write.LineToCenter("Delete Group");
             Console.WriteLine();
 
-            string name = InsertGroupName();  // Call the InsertGroupName() method to get the group name from the user
+            string name = InsertGroupName();
 
-            ServiceGroupService.DeleteGroup(name);  // Delete the group with the specified name
+            ServiceGroupService.DeleteGroup(name);
 
             Console.WriteLine();
-            Console.WriteLine("Group Deleted");
+            Write.LineToCenter("Group Deleted");
             Console.ReadKey();
-            ServiceGroupEditMenu.Print();  // Go back to the service group edit menu
+            ServiceGroupEditMenu.Print();
         }
 
         private static string InsertGroupName()
         {
-            Console.Write("Group Name: ");
-            string? groupName = Console.ReadLine();  // Read the group name entered by the user
+            Write.ToCenter("Group Name: ");
+            string? groupName = Console.ReadLine();
 
             switch (ServiceGroupService.CheckName(groupName))
             {
                 case 0:
-                    Console.WriteLine("\nGroup Name is required");  // Display an error message if the group name is empty
+                    Console.WriteLine();
+                    Write.LineToCenter("Group Name is required");
                     Console.ReadKey();
-                    Print();  // Call the Print() method again to allow the user to enter the group name
+                    Print();
                     break;
                 case 1:
-                    Console.WriteLine("\nGroup Name must not have numbers");  // Display an error message if the group name contains numbers
+                    Console.WriteLine();
+                    Write.LineToCenter("Group Name must not have numbers");
                     Console.ReadKey();
-                    Print();  // Call the Print() method again to allow the user to enter the group name
+                    Print();
                     break;
-                default: break;  // If the group name is valid, proceed to the next step
+                default: break;
             }
 
             ServiceGroup serviceGroup = ServiceGroupService.GetGroupByName(groupName);
-            if (serviceGroup == null)
+            if(serviceGroup == null)
             {
-                Console.WriteLine("\nGroup doesn't exist");  // Display an error message if the group name doesn't exist
+                Console.WriteLine();
+                Write.LineToCenter("Group doesn't exist");
                 Console.ReadKey();
-                Print();  // Call the Print() method again to allow the user to enter a different group name
+                Print();
             }
 
-            return groupName;  // Return the valid group name entered by the user
+            return groupName;
         }
     }
 }

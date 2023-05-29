@@ -15,7 +15,7 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("Add Skill");
+            Write.LineToCenter("Add Skill");
             Console.WriteLine();
 
             List<Skill> skills = SkillService.GetAll();
@@ -27,13 +27,13 @@ namespace bsm.console
 
                 foreach (Skill skill in resultSkills)
                 {
-                    Console.WriteLine(skill.Name);
+                    Write.LineToCenter(skill.Name);
                 }
                 Console.WriteLine();
             }
             else
             {
-                Console.WriteLine("No skills added");
+                Write.LineToCenter("No skills added");
                 Console.WriteLine();
             }
 
@@ -42,20 +42,21 @@ namespace bsm.console
             UserSkillService.AddSkillToUser(UserLog.LoggedUser, name);
 
             Console.WriteLine();
-            Console.WriteLine("Skill Added");
+            Write.LineToCenter("Skill Added");
             Console.ReadKey();
             EmployeeSkillsMenu.Print();
         }
 
         private static string InsertEmployeeSkill()
         {
-            Console.Write("Skill Name: ");
+            Write.ToCenter("Skill Name: ");
             string skillName = Console.ReadLine();
 
 
             if (skillName.IsNullOrEmpty())
             {
-                Console.WriteLine("\nSkill Name is required");
+                Console.WriteLine();
+                Write.LineToCenter("Skill Name is required");
                 Console.ReadKey();
                 Print();
             }
@@ -63,7 +64,8 @@ namespace bsm.console
             Skill skill = SkillService.GetSkillByName(skillName);
             if (skill == null)
             {
-                Console.WriteLine("\nSkill doesn't exist");
+                Console.WriteLine();
+                Write.LineToCenter("Skill doesn't exist");
                 Console.ReadKey();
                 Print();
             }

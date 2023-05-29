@@ -1,5 +1,6 @@
 ﻿using bsm.bll;
 using bsm.dal.Models;
+using bsm.util;
 using Microsoft.IdentityModel.Tokens;
 
 namespace bsm.console
@@ -9,23 +10,23 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("Services");
+            Write.LineToCenter("Services");
             Console.WriteLine();
 
             List<ServiceGroup> serviceGroups = ServiceGroupService.GetAll();
 
             if(!serviceGroups.IsNullOrEmpty())
             {
-                Console.WriteLine("Service Name");
+                Write.LineToCenter("Service Name");
                 foreach (ServiceGroup serviceGroup in serviceGroups)
                 {
-                    Console.WriteLine(serviceGroup.Name);
+                    Write.LineToCenter(serviceGroup.Name);
                 }
                 Console.WriteLine();
             }
             else
             {
-                Console.WriteLine("No Services");
+                Write.LineToCenter("No Services");
                 Console.WriteLine();
             }
 
@@ -38,11 +39,15 @@ namespace bsm.console
 
             foreach ( Service service in services )
             {
-                Console.WriteLine($"{service.Name} : {service.Price:F2}$ : {service.Time.Hours * 60 + service.Time.Minutes} min");
+                Write.LineToCenter($"{service.Name} : {service.Price:F2}$ : {service.Time.Hours * 60 + service.Time.Minutes} min");
             }
 
             Console.WriteLine();
-            Console.WriteLine("[S] See Skills  [A] Add Service  [E] Edit Service  [D] Delete Service  [B] Back");
+            Write.LineToCenter("[S] See Skills    ");
+            Write.LineToCenter("[A] Add Service   ");
+            Write.LineToCenter("[E] Edit Service  ");
+            Write.LineToCenter("[D] Delete Service");
+            Write.LineToCenter("[B] Back          ");
 
             while (true)
             {
@@ -62,13 +67,14 @@ namespace bsm.console
 
         private static string InsertGroupName()
         {
-            Console.Write("Group Name: ");
+            Write.ToCenter("Group Name: ");
             string? groupName = Console.ReadLine();
 
             switch (ServiceGroupService.CheckName(groupName))
             {
                 case 0:
-                    Console.WriteLine("\nGroup Name is required");
+                    Console.WriteLine();
+                    Write.LineToCenter("Group Name is required");
                     Console.ReadKey();
                     Print();
                     break;
@@ -78,7 +84,8 @@ namespace bsm.console
             ServiceGroup serviceGroup = ServiceGroupService.GetGroupByName(groupName);
             if (serviceGroup == null)
             {
-                Console.WriteLine("\nGroup doesn't exist");
+                Console.WriteLine();
+                Write.LineToCenter("Group doesn't exist");
                 Console.ReadKey();
                 Print();
             }

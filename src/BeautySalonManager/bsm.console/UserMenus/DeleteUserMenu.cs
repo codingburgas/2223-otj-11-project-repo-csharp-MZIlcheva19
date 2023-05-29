@@ -8,7 +8,9 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("Are you sure you want to delete your account?  [Y] Yes  [N] No");
+            Write.LineToCenter("Are you sure you want to delete your account?");
+            Write.LineToCenter("[Y] Yes");
+            Write.LineToCenter("[N] No ");
 
             while (true)
             {
@@ -17,7 +19,7 @@ namespace bsm.console
                 switch (input)
                 {
                     case 'Y': UserService.DeleteUser(UserLog.LoggedUser); StartMenu.Print(); break;
-                    case 'N': OptionsMenu.Print(); break;
+                    case 'N': SettingsMenu.Print(); break;
                     default: break;
                 }
             }

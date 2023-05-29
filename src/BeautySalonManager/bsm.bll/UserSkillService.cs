@@ -6,7 +6,6 @@ namespace bsm.bll
 {
     public class UserSkillService
     {
-        // Retrieves all user skills by user ID
         public static List<UserSkill> GetAllByUser(int userId)
         {
             using (var context = new BeautySalonContext())
@@ -17,7 +16,6 @@ namespace bsm.bll
             }
         }
 
-        // Adds a skill to a user
         public static void AddSkillToUser(User user, string skillName)
         {
             using (var context = new BeautySalonContext())
@@ -32,14 +30,13 @@ namespace bsm.bll
                     SkillId = skill.Id
                 };
 
-                if (!UserSkillExists(userSkill))
+                if(!UserSkillExists(userSkill))
                 {
                     userSkillRepository.AddRow(userSkill);
                 }
             }
         }
 
-        // Removes a skill from a user
         public static void RemoveSkill(User user, string skillName)
         {
             using (var context = new BeautySalonContext())
@@ -54,7 +51,6 @@ namespace bsm.bll
             }
         }
 
-        // Deletes all skills associated with a user
         public static void DeleteAllUsersSkills(User user)
         {
             using (var context = new BeautySalonContext())
@@ -70,7 +66,6 @@ namespace bsm.bll
             }
         }
 
-        // Deletes all user skill rows associated with a skill
         public static void DeleteAllSkillsRows(Skill skill)
         {
             using (var context = new BeautySalonContext())
@@ -86,7 +81,6 @@ namespace bsm.bll
             }
         }
 
-        // Checks if a user skill exists
         public static bool UserSkillExists(UserSkill userSkill)
         {
             using (var context = new BeautySalonContext())
@@ -95,7 +89,7 @@ namespace bsm.bll
 
                 List<UserSkill> userSkillsList = userSkillRepository.GetAll().ToList();
 
-                if (userSkillsList.FirstOrDefault(us => us.UserId == userSkill.UserId && us.SkillId == userSkill.SkillId) == null)
+                if(userSkillsList.FirstOrDefault(us => us.UserId == userSkill.UserId && us.SkillId == userSkill.SkillId) ==  null)
                 {
                     return false;
                 }

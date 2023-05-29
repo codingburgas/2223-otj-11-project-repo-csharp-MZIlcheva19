@@ -6,7 +6,6 @@ namespace bsm.bll
 {
     public class SkillService
     {
-        // Retrieves all skills
         public static List<Skill> GetAll()
         {
             using (var context = new BeautySalonContext())
@@ -17,7 +16,6 @@ namespace bsm.bll
             }
         }
 
-        // Retrieves a skill by its name
         public static Skill GetSkillByName(string name)
         {
             using (var context = new BeautySalonContext())
@@ -28,7 +26,6 @@ namespace bsm.bll
             }
         }
 
-        // Retrieves skills associated with a service ID
         public static List<Skill> GetServicesSkills(int serviceId)
         {
             using (var context = new BeautySalonContext())
@@ -55,7 +52,6 @@ namespace bsm.bll
             }
         }
 
-        // Retrieves skills associated with a user ID
         public static List<Skill> GetUsersSkills(int userId)
         {
             using (var context = new BeautySalonContext())
@@ -82,7 +78,6 @@ namespace bsm.bll
             }
         }
 
-        // Adds a new skill
         public static void AddRow(string name)
         {
             using (var context = new BeautySalonContext())
@@ -98,7 +93,6 @@ namespace bsm.bll
             }
         }
 
-        // Deletes a skill and its associated data
         public static void DeleteSkill(string name)
         {
             using (var context = new BeautySalonContext())
@@ -113,7 +107,6 @@ namespace bsm.bll
             }
         }
 
-        // Edits a skill's name
         public static void EditRow(string oldName, string newName)
         {
             using (var context = new BeautySalonContext())

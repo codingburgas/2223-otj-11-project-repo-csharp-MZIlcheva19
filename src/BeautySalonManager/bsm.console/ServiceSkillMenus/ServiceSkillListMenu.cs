@@ -1,5 +1,6 @@
 ﻿using bsm.bll;
 using bsm.dal.Models;
+using bsm.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,15 +14,15 @@ namespace bsm.console
         public static void Print(int groupId)
         {
             Console.Clear();
-            Console.WriteLine("See Skills");
+            Write.LineToCenter("See Skills");
             Console.WriteLine();
 
             List<Service> services = ServiceService.GetAllByGroup(groupId);
 
-            Console.WriteLine("Services\n");
+            Write.LineToCenter("Services\n");
             foreach (Service item in services)
             {
-                Console.WriteLine(item.Name);
+                Write.LineToCenter(item.Name);
             }
 
             string serviceName = InsertServiceName(groupId);
@@ -32,11 +33,13 @@ namespace bsm.console
 
             foreach (Skill skill in skills)
             {
-                Console.WriteLine(skill.Name);
+                Write.LineToCenter(skill.Name);
             }
 
             Console.WriteLine();
-            Console.WriteLine("[A] Add Skills  [R] Remove Skill  [B] Back");
+            Write.LineToCenter("[A] Add Skills  ");
+            Write.LineToCenter("[R] Remove Skill");
+            Write.LineToCenter("[B] Back        ");
 
             while (true)
             {
@@ -54,13 +57,14 @@ namespace bsm.console
 
         private static string InsertServiceName(int groupId)
         {
-            Console.Write("Service Name: ");
+            Write.ToCenter("Service Name: ");
             string? serviceName = Console.ReadLine();
 
             switch (ServiceService.CheckName(serviceName))
             {
                 case 0:
-                    Console.WriteLine("\nService Name is required");
+                    Console.WriteLine();
+                    Write.LineToCenter("Service Name is required");
                     Console.ReadKey();
                     Print(groupId);
                     break;
@@ -70,7 +74,8 @@ namespace bsm.console
             Service? service = ServiceService.GetServiceByName(serviceName, groupId);
             if (service == null)
             {
-                Console.WriteLine("\nService doesn't exist");
+                Console.WriteLine();
+                Write.LineToCenter("Service doesn't exist");
                 Console.ReadKey();
                 Print(groupId);
             }

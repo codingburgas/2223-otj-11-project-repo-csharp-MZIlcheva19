@@ -1,5 +1,6 @@
 ﻿using bsm.bll;
 using bsm.dal.Models;
+using bsm.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,74 +14,79 @@ namespace bsm.console
         public static void Print()
         {
             Console.Clear();
-            Console.WriteLine("Edit Group");
+            Write.LineToCenter("Edit Group");
             Console.WriteLine();
 
-            string oldName = InsertOldGroupName();  // Call the InsertOldGroupName() method to get the old group name from the user
-            string newName = InsertNewGroupName();  // Call the InsertNewGroupName() method to get the new group name from the user
+            string oldName = InsertOldGroupName();
+            string newName = InsertNewGroupName();
 
-            ServiceGroupService.EditGroup(oldName, newName);  // Edit the group by replacing the old group name with the new group name
+            ServiceGroupService.EditGroup(oldName, newName);
 
             Console.WriteLine();
-            Console.WriteLine("Group Edited");
-            ServiceGroupEditMenu.Print();  // Go back to the service group edit menu
+            Write.LineToCenter("Group Edited");
+            ServiceGroupEditMenu.Print();
         }
 
         private static string InsertOldGroupName()
         {
-            Console.Write("Group Old Name: ");
-            string? groupName = Console.ReadLine();  // Read the old group name entered by the user
+            Write.ToCenter("Group Old Name: ");
+            string? groupName = Console.ReadLine();
 
             switch (ServiceGroupService.CheckName(groupName))
             {
                 case 0:
-                    Console.WriteLine("\nGroup Name is required");  // Display an error message if the old group name is empty
+                    Console.WriteLine();
+                    Write.LineToCenter("Group Name is required");
                     Console.ReadKey();
-                    Print();  // Call the Print() method again to allow the user to enter the old group name
+                    Print();
                     break;
-                default: break;  // If the old group name is valid, proceed to the next step
+                default: break;
             }
 
             ServiceGroup serviceGroup = ServiceGroupService.GetGroupByName(groupName);
             if (serviceGroup == null)
             {
-                Console.WriteLine("\nGroup doesn't exist");  // Display an error message if the old group name doesn't exist
+                Console.WriteLine();
+                Write.LineToCenter("Group doesn't exist");
                 Console.ReadKey();
-                Print();  // Call the Print() method again to allow the user to enter a different old group name
+                Print();
             }
 
-            return groupName;  // Return the valid old group name entered by the user
+            return groupName;
         }
 
         private static string InsertNewGroupName()
         {
-            Console.Write("Group Name: ");
-            string? groupName = Console.ReadLine();  // Read the new group name entered by the user
+            Write.ToCenter("Group Name: ");
+            string? groupName = Console.ReadLine();
 
             switch (ServiceGroupService.CheckName(groupName))
             {
                 case 0:
-                    Console.WriteLine("\nGroup Name is required");  // Display an error message if the new group name is empty
+                    Console.WriteLine();
+                    Write.LineToCenter("Group Name is required");
                     Console.ReadKey();
-                    Print();  // Call the Print() method again to allow the user to enter the new group name
+                    Print();
                     break;
                 case 1:
-                    Console.WriteLine("\nGroup Name must not have numbers");  // Display an error message if the new group name contains numbers
+                    Console.WriteLine();
+                    Write.LineToCenter("Group Name must not have numbers");
                     Console.ReadKey();
-                    Print();  // Call the Print() method again to allow the user to enter a different new group name
+                    Print();
                     break;
-                default: break;  // If the new group name is valid, proceed to the next step
+                default: break;
             }
 
             ServiceGroup serviceGroup = ServiceGroupService.GetGroupByName(groupName);
             if (serviceGroup != null)
             {
-                Console.WriteLine("\nGroup already exists");  // Display an error message if the new group name already exists
+                Console.WriteLine();
+                Write.LineToCenter("Group already exists");
                 Console.ReadKey();
-                Print();  // Call the Print() method again to allow the user to enter a different new group name
+                Print();
             }
 
-            return groupName;  // Return the valid new group name entered by the user
+            return groupName;
         }
     }
 }

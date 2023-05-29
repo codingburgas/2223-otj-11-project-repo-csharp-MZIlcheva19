@@ -1,5 +1,6 @@
 ﻿using bsm.bll;
 using bsm.dal.Models;
+using bsm.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,36 +14,40 @@ namespace bsm.console
         public static void Print(int groupId)
         {
             Console.Clear();
-            Console.WriteLine("Add Service");
-            Console.WriteLine(ServiceGroupService.GetGroupNameById(groupId));
+            Write.LineToCenter("Add Service");
+            Console.WriteLine();
+            Write.LineToCenter($"Group: {ServiceGroupService.GetGroupNameById(groupId)}");
             Console.WriteLine();
 
             string name = InsertServiceName(groupId);
             decimal price = InsertServicePrice(groupId);
-            Console.WriteLine("\nInput only minutes");
+            Console.WriteLine();
+            Write.LineToCenter("Input only minutes");
             TimeSpan time = InsertServiceTime(groupId);
 
             ServiceService.AddRow(name, price, time, groupId);
 
             Console.WriteLine();
-            Console.WriteLine("Skill Added");
+            Write.LineToCenter("Skill Added");
             ServiceEditListMenu.Print();
         }
 
         private static string InsertServiceName(int groupId)
         {
-            Console.Write("Service Name: ");
+            Write.ToCenter("Service Name: ");
             string? serviceName = Console.ReadLine();
 
             switch (ServiceService.CheckName(serviceName))
             {
                 case 0:
-                    Console.WriteLine("\nService Name is required");
+                    Console.WriteLine();
+                    Write.LineToCenter("Service Name is required");
                     Console.ReadKey();
                     Print(groupId);
                     break;
                 case 1:
-                    Console.WriteLine("\nService Name must not have numbers");
+                    Console.WriteLine();
+                    Write.LineToCenter("Service Name must not have numbers");
                     Console.ReadKey();
                     Print(groupId);
                     break;
@@ -52,7 +57,8 @@ namespace bsm.console
             Service? service = ServiceService.GetServiceByName(serviceName, groupId);
             if(service != null)
             {
-                Console.WriteLine("\nService Name is taken");
+                Console.WriteLine();
+                Write.LineToCenter("Service Name is taken");
                 Console.ReadKey();
                 Print(groupId);
             }
@@ -62,18 +68,20 @@ namespace bsm.console
 
         private static decimal InsertServicePrice(int groupId)
         {
-            Console.Write("Service Price: ");
+            Write.ToCenter("Service Price: ");
             string price = Console.ReadLine();
 
             switch (ServiceService.CheckPrice(price))
             {
                 case 0:
-                    Console.WriteLine("\nService Price is required");
+                    Console.WriteLine();
+                    Write.LineToCenter("Service Price is required");
                     Console.ReadKey();
                     Print(groupId);
                     break;
                 case 1:
-                    Console.WriteLine("\nService Price must not have letters");
+                    Console.WriteLine();
+                    Write.LineToCenter("Service Price must not have letters");
                     Console.ReadKey();
                     Print(groupId);
                     break;
@@ -84,18 +92,20 @@ namespace bsm.console
 
         private static TimeSpan InsertServiceTime(int groupId)
         {
-            Console.Write("Service Time: ");
+            Write.ToCenter("Service Time: ");
             string time = Console.ReadLine();
 
             switch (ServiceService.CheckTime(time))
             {
                 case 0:
-                    Console.WriteLine("\nService Time is required");
+                    Console.WriteLine();
+                    Write.LineToCenter("Service Time is required");
                     Console.ReadKey();
                     Print(groupId);
                     break;
                 case 1:
-                    Console.WriteLine("\nService Time must not have letters");
+                    Console.WriteLine();
+                    Write.LineToCenter("Service Time must not have letters");
                     Console.ReadKey();
                     Print(groupId);
                     break;
