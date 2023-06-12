@@ -1,16 +1,32 @@
-# 2223-10: On the job training (OTJ) project
+# Beauty Management Project
 
-## 1. Introduction
+## About
 
-This is your personal repository for the OTJ project. **Do not create any projects until requested by your teacher!**
+This project aims to create a beauty management system that allows beauty professionals to efficiently manage client information, services, appointments, and more. The application provides a console interface for easy navigation and data entry. Key features of the beauty management system include:
 
-## 2. Project definition & links
+ - Client Management: Register and update client information, including name, contact details, and preferences.
+ - Service Management: Add, edit, and delete services offered, including descriptions, prices, and durations.
+ - Appointment Management: Schedule appointments for clients, specifying the date, time, service, and assigned staff.
+ - Reporting: Generate reports on appointment schedules, client lists, and service statistics.
 
-You're required to follow and implement the bare minimum of functionality as per your assignment. You're free to extend the project and add more features.
+## Installation
+To install and run the beauty management project on your computer, follow these steps:
 
-[Assignment's README](https://github.com/codingburgas/2223-otj-11-project-definition)
+ - Download the project from GitHub by clicking the green "Clone" button or using the following command in your terminal:
 
-The README will be updated frequently to reflect every stage of the project.
+   ``git clone --recursive https://github.com/your-username/beauty-management-project.git``
 
+ - Once the project is downloaded, open the solution file (BeautyManagement.sln) in your preferred Integrated Development Environment (IDE) that supports C#.
 
-**Note:** if you receive error 404, please ensure you're logged in GitHub. Be sure to clear stale credentials in Credential Manager (Windows). If you still receive 404, please contact your teacher.
+ - Make sure you have a compatible database engine installed on your computer, such as Microsoft SQL Server.
+
+ - Configure the database connection string in the app.config file. Locate the <connectionStrings> section and replace the placeholder values with the actual database server details.   Provide the server name, database name, and appropriate credentials.
+
+ - Build the project to ensure all dependencies are resolved.
+
+ - Start the console application by running the project.
+
+ - The console interface will be displayed, allowing you to interact with the beauty management system.
+
+## Thank You!
+Thank you for choosing our beauty management project. We hope it helps you streamline your beauty-related operations. If you have any questions or encounter any issues, please don't hesitate to reach out. Don't forget to give the repo a star if you found it helpful! ⭐
